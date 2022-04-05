@@ -9,7 +9,7 @@ public class MainControl : MonoBehaviour
 
     public void SpawnNewTrain()
     {
-        Instantiate(obje, new Vector3(0, 0, 15), Quaternion.identity);
+        Instantiate(obje, new Vector3(0, 0, 20), Quaternion.identity);
        
     }
 }

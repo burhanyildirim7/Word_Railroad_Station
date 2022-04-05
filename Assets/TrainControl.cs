@@ -57,7 +57,7 @@ public class TrainControl : MonoBehaviour
         }
         else
         {
-            transform.Translate(new Vector3(0, 0, -3 * Time.deltaTime));
+            transform.Translate(new Vector3(0, 0, -3     * Time.deltaTime));
         }
     }
 
