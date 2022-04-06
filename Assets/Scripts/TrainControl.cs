@@ -7,9 +7,9 @@ public class TrainControl : MonoBehaviour
 {
     GameObject TurnDirection;
 
-    public Transform leftRoad;
-    public Transform rightRoad;
-    public Transform midRoad;
+    private Transform leftRoad;
+    private Transform rightRoad;
+    private Transform midRoad;
 
     public Transform leftTurnPoint;
     public Transform rightTurnPoint;
@@ -20,8 +20,15 @@ public class TrainControl : MonoBehaviour
     {
         RandomColor();
         TurnDirection = GameObject.FindGameObjectWithTag("turnDirection");
-       
 
+        leftRoad = GameObject.FindGameObjectWithTag("LeftStation").transform;
+        midRoad = GameObject.FindGameObjectWithTag("MidStation").transform;
+        rightRoad = GameObject.FindGameObjectWithTag("RightStation").transform;
+
+        leftTurnPoint = GameObject.FindGameObjectWithTag("LeftTurnPoint").transform;
+        rightTurnPoint = GameObject.FindGameObjectWithTag("RightTurnPoint").transform;
+
+        GetComponent<BoxCollider>().isTrigger = true;
     }
 
     void Update()
@@ -57,22 +64,15 @@ public class TrainControl : MonoBehaviour
         }
         else
         {
-            transform.Translate(new Vector3(0, 0, -3     * Time.deltaTime));
+            transform.Translate(new Vector3(0, 0, 3     * Time.deltaTime));
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "targetPoint")
+        if (other.gameObject.tag == "LeftStation" || other.gameObject.tag == "MidStation" || other.gameObject.tag == "RightStation")
         {
-            if (gameObject.GetComponent<Renderer>().material.color == other.gameObject.GetComponent<Renderer>().material.color)
-            {
-                Debug.Log("Doðru Renk");
-            }
-            else
-            {
-                Debug.Log("Yanlýþ Renk");
-            }
+         
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
         }

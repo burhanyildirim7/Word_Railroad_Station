@@ -11,6 +11,14 @@ TagManager:
   - finish
   - collectible
   - elmas
+  - targetPoint
+  - turnDirection
+  - MainControl
+  - LeftStation
+  - MidStation
+  - RightStation
+  - RightTurnPoint
+  - LeftTurnPoint
   layers:
   - Default
   - TransparentFX
