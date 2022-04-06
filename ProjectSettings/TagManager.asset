@@ -19,6 +19,7 @@ TagManager:
   - RightStation
   - RightTurnPoint
   - LeftTurnPoint
+  - Stop
   layers:
   - Default
   - TransparentFX

@@ -14,11 +14,11 @@ public class TrainControl : MonoBehaviour
     public Transform leftTurnPoint;
     public Transform rightTurnPoint;
 
-
+    public int trainSpeed = 3;
     bool canTurn = false;
     void Start()
     {
-        RandomColor();
+       
         TurnDirection = GameObject.FindGameObjectWithTag("turnDirection");
 
         leftRoad = GameObject.FindGameObjectWithTag("LeftStation").transform;
@@ -34,7 +34,7 @@ public class TrainControl : MonoBehaviour
     void Update()
     {
 
-
+        transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
         MoveToTargetRoad();
     }
 
@@ -47,6 +47,7 @@ public class TrainControl : MonoBehaviour
             if (TurnDirection.GetComponent<TurnDirection>().right)
             {
                 transform.DOMove(rightTurnPoint.position, 1).OnComplete(() => OnCompleteRightPoint());
+               
                 transform.LookAt(rightTurnPoint);
 
             }
@@ -64,16 +65,16 @@ public class TrainControl : MonoBehaviour
         }
         else
         {
-            transform.Translate(new Vector3(0, 0, 3     * Time.deltaTime));
+            transform.Translate(new Vector3(0, trainSpeed * Time.deltaTime, 0));
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LeftStation" || other.gameObject.tag == "MidStation" || other.gameObject.tag == "RightStation")
+        if (other.gameObject.tag == "LeftStation" || other.gameObject.tag == "MidStation" || other.gameObject.tag == "RightStation" || other.gameObject.tag == "Stop")
         {
-         
-            Destroy(gameObject);
+            gameObject.tag = "Stop";
+            Stop();
             GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
         }
         if (other.gameObject.tag == "turnDirection")
@@ -82,36 +83,23 @@ public class TrainControl : MonoBehaviour
         }
     }
 
-    void RandomColor()
+    void Stop()
     {
-        int colorNumber;
-        colorNumber = Random.Range(0, 3);
-
-        if (colorNumber == 0)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
-        else if (colorNumber == 1)
-        {
-            GetComponent<Renderer>().material.color = Color.blue;
-        }
-        else if (colorNumber == 2)
-        {
-            GetComponent<Renderer>().material.color = Color.green;
-        }
+        DOTween.Kill(transform);
+        trainSpeed = 0;
     }
 
     void OnCompleteRightPoint()
     {
 
-        transform.DOMove(rightRoad.position, 1);
+        transform.DOMove(rightRoad.position, 1).OnComplete(()=>Stop());
         transform.LookAt(rightRoad);
     }
 
     void OnCompleteLeftPoint()
     {
 
-        transform.DOMove(leftRoad.position, 1);
+        transform.DOMove(leftRoad.position, 1).OnComplete(() => Stop());
         transform.LookAt(leftRoad);
     }
 }
