@@ -6,6 +6,12 @@ using DG.Tweening;
 public class TrainControl : MonoBehaviour
 {
     GameObject TurnDirection;
+    public GameObject parentObject;
+
+
+    bool canGoLeftStation;
+    bool canGoMidStation;
+    bool canGoRightStation;
 
     private Transform leftRoad;
     private Transform rightRoad;
@@ -18,7 +24,8 @@ public class TrainControl : MonoBehaviour
     bool canTurn = false;
     void Start()
     {
-       
+
+    
         TurnDirection = GameObject.FindGameObjectWithTag("turnDirection");
 
         leftRoad = GameObject.FindGameObjectWithTag("LeftStation").transform;
@@ -33,6 +40,26 @@ public class TrainControl : MonoBehaviour
 
     void Update()
     {
+        canGoLeftStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationAvailable;
+        canGoMidStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationAvailable;
+        canGoRightStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationAvailable;
+
+
+        if (canGoRightStation == false)
+        {
+            Debug.Log("Sað Ýstasyon Kapandý");
+        }
+
+        if (canGoLeftStation == false)
+        {
+            Debug.Log("Sol Ýstasyon Kapandý");
+        }
+
+        if (canGoMidStation == false)
+        {
+            Debug.Log("Orta Ýstasyon Kapandý");
+        }
+
 
         transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
         MoveToTargetRoad();
@@ -71,12 +98,136 @@ public class TrainControl : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LeftStation" || other.gameObject.tag == "MidStation" || other.gameObject.tag == "RightStation" || other.gameObject.tag == "Stop")
+     
+
+        if (canGoLeftStation)
         {
-            gameObject.tag = "Stop";
-            Stop();
-            GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+            if (other.gameObject.tag == "LeftStop")
+            {
+                if (gameObject.tag == other.gameObject.GetComponent<TrainControl>().parentObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild).tag)
+                {
+                    gameObject.tag = "LeftStop";
+                    parentObject = leftRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+            }
+
+            if (other.gameObject.tag == "LeftStation")
+            {
+                if (gameObject.tag == other.gameObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild).gameObject.tag)
+                {
+                    gameObject.tag = "LeftStop";
+                    parentObject = leftRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+
+
+            }
         }
+    
+
+
+        if (canGoMidStation)
+        {
+            if (other.gameObject.tag == "MidStop")
+            {
+                if (gameObject.tag == other.gameObject.GetComponent<TrainControl>().parentObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild).tag)
+                {
+                    gameObject.tag = "MidStop";
+                    parentObject = midRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+            }
+
+            if (other.gameObject.tag == "MidStation")
+            {
+                if (gameObject.tag == other.gameObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild).gameObject.tag)
+                {
+                    gameObject.tag = "MidStop";
+                    parentObject = midRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+
+
+            }
+        }
+
+     
+
+
+        if (canGoRightStation)
+        {
+            if (other.gameObject.tag == "RightStop")
+            {
+                if (gameObject.tag == other.gameObject.GetComponent<TrainControl>().parentObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild).tag)
+                {
+                    gameObject.tag = "RightStop";
+                    parentObject = rightRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+            }
+
+            if (other.gameObject.tag == "RightStation")
+            {
+                if (gameObject.tag == other.gameObject.transform.GetChild(GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild).gameObject.tag)
+                {
+                    gameObject.tag = "RightStop";
+                    parentObject = rightRoad.gameObject;
+                    Stop();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                }
+
+
+            }
+        }
+
+        
+
+
+
+
+
         if (other.gameObject.tag == "turnDirection")
         {
             canTurn = true;
