@@ -40,6 +40,11 @@ public class TrainControl : MonoBehaviour
 
     void Update()
     {
+
+        if (gameObject.tag == "LeftStop")
+        {
+            GetComponent<TrainControl>().enabled = false;
+        }
         canGoLeftStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationAvailable;
         canGoMidStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationAvailable;
         canGoRightStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationAvailable;
@@ -109,13 +114,13 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "LeftStop";
                     parentObject = leftRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
             }
 
@@ -126,13 +131,13 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "LeftStop";
                     parentObject = leftRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().leftStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
 
 
@@ -150,13 +155,13 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "MidStop";
                     parentObject = midRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
             }
 
@@ -167,13 +172,13 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "MidStop";
                     parentObject = midRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
 
 
@@ -192,13 +197,13 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "RightStop";
                     parentObject = rightRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
             }
 
@@ -209,21 +214,57 @@ public class TrainControl : MonoBehaviour
                     gameObject.tag = "RightStop";
                     parentObject = rightRoad.gameObject;
                     Stop();
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                   // GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                     GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationChild++;
                 }
                 else
                 {
                     Destroy(gameObject);
-                    GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
+                    //GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().SpawnNewTrain();
                 }
 
 
             }
         }
 
-        
 
+
+       
+            if (other.gameObject.tag == "LeftStop")
+            {
+            if (canGoLeftStation == false)
+            {
+                DOTween.Kill(transform);
+                trainSpeed = 0;
+                GetComponent<Rigidbody>().useGravity = true;
+                Destroy(gameObject, 3);
+            }
+     
+            }
+
+        if (other.gameObject.tag == "RightStop")
+        {
+            if (canGoRightStation == false)
+            {
+                trainSpeed = 0;
+                DOTween.Kill(transform);
+                GetComponent<Rigidbody>().useGravity = true;
+                Destroy(gameObject,3);
+            }
+
+        }
+
+        if (other.gameObject.tag == "MidStop")
+        {
+            if (canGoMidStation == false)
+            {
+                trainSpeed = 0;
+                DOTween.Kill(transform);
+                GetComponent<Rigidbody>().useGravity = true;
+                Destroy(gameObject, 3);
+            }
+
+        }
 
 
 
@@ -236,7 +277,7 @@ public class TrainControl : MonoBehaviour
 
      void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == GameObject.FindGameObjectWithTag("turnDirection").transform.GetChild(0).gameObject)
+        if (other.gameObject == GameObject.FindGameObjectWithTag("turnDirection").transform.GetChild(0).gameObject || other.gameObject == GameObject.FindGameObjectWithTag("turnDirection").transform.GetChild(1).gameObject)
         {
             GameObject.FindGameObjectWithTag("turnDirection").GetComponent<TurnDirection>().lockTurn = true;
             Debug.Log("Temas Var");

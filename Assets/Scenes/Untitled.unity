@@ -705,27 +705,27 @@ PrefabInstance:
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[3]
       value: 
-      objectReference: {fileID: 1374559168}
+      objectReference: {fileID: 868508008}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[4]
       value: 
-      objectReference: {fileID: 1112440035}
+      objectReference: {fileID: 1156007526}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[5]
       value: 
-      objectReference: {fileID: 626286859}
+      objectReference: {fileID: 295088993}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[6]
       value: 
-      objectReference: {fileID: 2080107129}
+      objectReference: {fileID: 868508008}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[7]
       value: 
-      objectReference: {fileID: 562288431}
+      objectReference: {fileID: 1156007526}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: allLetters.Array.data[8]
       value: 
-      objectReference: {fileID: 380687297}
+      objectReference: {fileID: 295088993}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: firstThreeLetters.Array.size
       value: 9

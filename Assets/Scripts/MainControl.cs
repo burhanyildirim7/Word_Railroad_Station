@@ -16,11 +16,13 @@ public class MainControl : MonoBehaviour
     public List<GameObject> existingLetter = new List<GameObject>();
 
 
+    bool ready = true;
+
      void Start()
     {
        
 
-        SpawnNewTrain();
+        
     }
     void Update()
     {
@@ -38,11 +40,16 @@ public class MainControl : MonoBehaviour
         {
             rightStationAvailable = false;
         }
-
+        if (ready)
+        {
+            StartCoroutine(SpawnNewTrain());
+        }
+       
 
     }
-    public void SpawnNewTrain()
-    {   
+    IEnumerator  SpawnNewTrain()
+    {
+        ready = false;
         int randomNumber;
         randomNumber = Random.Range(0, 9);
         GameObject obje = allLetters[randomNumber];
@@ -50,6 +57,10 @@ public class MainControl : MonoBehaviour
         spawnedLetter.AddComponent<TrainControl>();
         spawnedLetter.AddComponent<Rigidbody>();
         spawnedLetter.GetComponent<Rigidbody>().useGravity = false;
-        spawnedLetter.AddComponent<BoxCollider>();    
+        spawnedLetter.AddComponent<BoxCollider>();
+        yield return new WaitForSeconds(3);
+        ready = true;
     }
+
+    
 }
