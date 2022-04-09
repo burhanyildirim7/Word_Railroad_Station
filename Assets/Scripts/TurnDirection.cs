@@ -8,6 +8,8 @@ public class TurnDirection : MonoBehaviour
     public bool left;
     public bool mid;
 
+    public bool lockTurn = false;
+
     void Start()
     {
         mid = true;
@@ -16,8 +18,12 @@ public class TurnDirection : MonoBehaviour
 
     void Update()
     {
-      
-        TurnDirectionWithMouse();
+        if (lockTurn == false)
+        {
+            TurnDirectionWithMouse();
+        }
+
+  
     }
 
     void TurnDirectionWithMouse()

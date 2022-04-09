@@ -417,6 +417,7 @@ MonoBehaviour:
   right: 0
   left: 0
   mid: 0
+  lockTurn: 0
 --- !u!65 &215868056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1417,6 +1418,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2842407693778066046, guid: bc7c47f781a1f4878a82de237cd0d737, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746837410556171239, guid: bc7c47f781a1f4878a82de237cd0d737, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4149082118015882978, guid: bc7c47f781a1f4878a82de237cd0d737, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.6499958

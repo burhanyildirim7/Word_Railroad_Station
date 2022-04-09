@@ -234,6 +234,19 @@ public class TrainControl : MonoBehaviour
         }
     }
 
+     void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == GameObject.FindGameObjectWithTag("turnDirection").transform.GetChild(0).gameObject)
+        {
+            GameObject.FindGameObjectWithTag("turnDirection").GetComponent<TurnDirection>().lockTurn = true;
+            Debug.Log("Temas Var");
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("turnDirection").GetComponent<TurnDirection>().lockTurn = false;
+        }
+    }
+
     void Stop()
     {
         DOTween.Kill(transform);
