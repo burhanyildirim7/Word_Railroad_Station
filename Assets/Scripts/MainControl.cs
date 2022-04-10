@@ -58,7 +58,7 @@ public class MainControl : MonoBehaviour
         spawnedLetter.AddComponent<Rigidbody>();
         spawnedLetter.GetComponent<Rigidbody>().useGravity = false;
         spawnedLetter.AddComponent<BoxCollider>();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         ready = true;
     }
 

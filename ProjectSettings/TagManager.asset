@@ -32,6 +32,7 @@ TagManager:
   - MidStop
   - LeftStop
   - RightStop
+  - ArrowControl
   layers:
   - Default
   - TransparentFX

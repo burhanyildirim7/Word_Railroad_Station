@@ -1791,7 +1791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7929241977687923795, guid: bc7c47f781a1f4878a82de237cd0d737, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.83
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 7929241977687923795, guid: bc7c47f781a1f4878a82de237cd0d737, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3464,7 +3464,7 @@ GameObject:
   - component: {fileID: 1913654340}
   m_Layer: 0
   m_Name: ArrowControl
-  m_TagString: Untagged
+  m_TagString: ArrowControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3497,6 +3497,9 @@ MonoBehaviour:
   leftArrow: {fileID: 1841371985}
   midArrow: {fileID: 1481935899}
   rightArrow: {fileID: 1447742070}
+  arrowIsLeft: 0
+  arrowIsRight: 0
+  arrowIsMid: 0
 --- !u!4 &1913654342
 Transform:
   m_ObjectHideFlags: 0

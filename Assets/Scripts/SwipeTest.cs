@@ -10,6 +10,10 @@ public class SwipeTest : MonoBehaviour
     public GameObject midArrow;
     public GameObject rightArrow;
 
+    public bool arrowIsLeft;
+    public bool arrowIsRight;
+    public bool arrowIsMid;
+
     bool canSwipe = false;
   
     // Start is called before the first frame update
@@ -21,6 +25,12 @@ public class SwipeTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        CheckArrowDirection();
+
+
+        FunctionAccordingToArrowDirection();
+
         if (Input.GetMouseButtonDown(0))
         {
             canSwipe = true;
@@ -30,20 +40,25 @@ public class SwipeTest : MonoBehaviour
                 {
                     if (leftArrow.activeSelf)
                     {
-                        rightArrow.SetActive(true);
                         leftArrow.SetActive(false);
+                        rightArrow.SetActive(true);
+            
                     }
+     
 
                     else if (rightArrow.activeSelf)
                     {
                         rightArrow.SetActive(false);
                         midArrow.SetActive(true);
+           
                     }
+
 
                     else if (midArrow.activeSelf)
                     {
                         midArrow.SetActive(false);
                         leftArrow.SetActive(true);
+                   
                     }
                      canSwipe = false;
                 }
@@ -56,24 +71,71 @@ public class SwipeTest : MonoBehaviour
                           {
                             leftArrow.SetActive(false);
                             midArrow.SetActive(true);
+                         
                           }
 
                         else if (midArrow.activeSelf)
                         {
                             midArrow.SetActive(false);
                             rightArrow.SetActive(true);
+             
                         }
                         else if (rightArrow.activeSelf)
                         {
                             rightArrow.SetActive(false);
                             leftArrow.SetActive(true);
+                       
                         }
                         canSwipe = false;
-
                 }      
         }
         
 
 
-    
+    void CheckArrowDirection()
+    {
+        if (leftArrow.activeSelf)
+        {
+            arrowIsLeft = true;
+            arrowIsMid = false;
+            arrowIsRight = false;
+        }
+
+
+        if (rightArrow.activeSelf)
+        {
+            arrowIsLeft = false;
+            arrowIsMid = false;
+            arrowIsRight = true;
+
+        }
+
+        if (midArrow.activeSelf)
+        {
+            arrowIsLeft = false;
+            arrowIsMid = true;
+            arrowIsRight = false;
+
+        }
+
+    }
+
+    void FunctionAccordingToArrowDirection()
+    {
+        if (arrowIsLeft)
+        {
+            Debug.Log("Ok Sola Bakýyor");
+        }
+
+        if (arrowIsMid)
+        {
+            Debug.Log("Arrow Ortaya Bakýyor");
+        }
+
+        if (arrowIsRight)
+        {
+            Debug.Log("Arrow Saða Bakýyor");
+        }
+
+    }
 }

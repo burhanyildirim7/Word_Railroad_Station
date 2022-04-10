@@ -21,7 +21,7 @@ public class TrainControl : MonoBehaviour
     public Transform rightTurnPoint;
 
     public int trainSpeed = 3;
-    bool canTurn = false;
+    public bool canTurn = false;
     void Start()
     {
 
@@ -40,7 +40,7 @@ public class TrainControl : MonoBehaviour
 
     void Update()
     {
-
+        transform.SetParent(null);
         if (gameObject.tag == "LeftStop")
         {
             GetComponent<TrainControl>().enabled = false;
@@ -49,7 +49,7 @@ public class TrainControl : MonoBehaviour
         canGoMidStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().midStationAvailable;
         canGoRightStation = GameObject.FindGameObjectWithTag("MainControl").GetComponent<MainControl>().rightStationAvailable;
 
-
+        /*
         if (canGoRightStation == false)
         {
             Debug.Log("Sað Ýstasyon Kapandý");
@@ -65,6 +65,7 @@ public class TrainControl : MonoBehaviour
             Debug.Log("Orta Ýstasyon Kapandý");
         }
 
+        */
 
         transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.z);
         MoveToTargetRoad();
@@ -74,7 +75,7 @@ public class TrainControl : MonoBehaviour
     {
         if (canTurn)
         {
-
+            transform.parent = null;
 
             if (TurnDirection.GetComponent<TurnDirection>().right)
             {
@@ -98,6 +99,11 @@ public class TrainControl : MonoBehaviour
         else
         {
             transform.Translate(new Vector3(0, trainSpeed * Time.deltaTime, 0));
+            if (transform.position.z <= 14.5f)
+            {
+                trainSpeed = 0;
+              
+            }
         }
     }
 
@@ -271,7 +277,10 @@ public class TrainControl : MonoBehaviour
 
         if (other.gameObject.tag == "turnDirection")
         {
-            canTurn = true;
+
+            transform.parent = other.gameObject.transform;
+
+            
         }
     }
 
