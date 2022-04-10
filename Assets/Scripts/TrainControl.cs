@@ -8,7 +8,7 @@ public class TrainControl : MonoBehaviour
     GameObject TurnDirection;
     public GameObject parentObject;
 
-
+    bool newRound = false;
     bool canGoLeftStation;
     bool canGoMidStation;
     bool canGoRightStation;
@@ -40,7 +40,7 @@ public class TrainControl : MonoBehaviour
 
     void Update()
     {
-        transform.SetParent(null);
+    
         if (gameObject.tag == "LeftStop")
         {
             GetComponent<TrainControl>().enabled = false;
@@ -109,6 +109,14 @@ public class TrainControl : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+
+        if (other.gameObject.tag == "LeftStation" || other.gameObject.tag == "RightStation" || other.gameObject.tag == "MidStation" || other.gameObject.tag == "LeftStop" || other.gameObject.tag == "RightStop" || other.gameObject.tag == "MidStop")
+        {
+            GameObject.FindGameObjectWithTag("ArrowControl").GetComponent<SwipeTest>().midArrow.SetActive(true);
+            GameObject.FindGameObjectWithTag("ArrowControl").GetComponent<SwipeTest>().rightArrow.SetActive(false);
+            GameObject.FindGameObjectWithTag("ArrowControl").GetComponent<SwipeTest>().leftArrow.SetActive(false);
+            GameObject.FindGameObjectWithTag("turnDirection").GetComponent<TurnDirection>().newRound = true;
+        }
      
 
         if (canGoLeftStation)

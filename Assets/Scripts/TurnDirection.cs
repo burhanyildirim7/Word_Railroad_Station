@@ -13,7 +13,8 @@ public class TurnDirection : MonoBehaviour
     GameObject ArrowControl;
     GameObject otherGameobject;
 
-    bool trainCanGo = false;
+
+    public bool newRound = false;
     void Start()
     {
         mid = true;
@@ -25,7 +26,11 @@ public class TurnDirection : MonoBehaviour
 
     void Update()
     {
-  
+        if (newRound)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            newRound = false;
+        }
   
     }
 
