@@ -16,6 +16,7 @@ public class MainControl : MonoBehaviour
     public List<GameObject> existingLetter = new List<GameObject>();
 
 
+    public GameObject vagon;
     bool ready = true;
 
      void Start()
@@ -54,6 +55,7 @@ public class MainControl : MonoBehaviour
         randomNumber = Random.Range(0, 9);
         GameObject obje = allLetters[randomNumber];
         var spawnedLetter = Instantiate(obje, new Vector3(0, 0, 20), Quaternion.Euler(90,180,0));
+        Instantiate(vagon, new Vector3(0, 0, 20), Quaternion.identity);
         spawnedLetter.AddComponent<TrainControl>();
         spawnedLetter.AddComponent<Rigidbody>();
         spawnedLetter.GetComponent<Rigidbody>().useGravity = false;

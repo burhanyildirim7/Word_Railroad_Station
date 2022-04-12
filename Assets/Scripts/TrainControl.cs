@@ -290,6 +290,12 @@ public class TrainControl : MonoBehaviour
 
             
         }
+
+        if (other.gameObject.tag == "vagon")
+        {
+            other.transform.parent = transform;
+            other.gameObject.tag = "Untagged";
+        }
     }
 
      void OnTriggerStay(Collider other)

@@ -33,6 +33,7 @@ TagManager:
   - LeftStop
   - RightStop
   - ArrowControl
+  - vagon
   layers:
   - Default
   - TransparentFX

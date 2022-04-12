@@ -44,4 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8341eaae29e3eb468fd2fb3d9b3e0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obje: {fileID: 5351662938619361467, guid: 5136329f94578584ebce0245e626cbe2, type: 3}
+  leftStationChild: 0
+  midStationChild: 0
+  rightStationChild: 0
+  leftStationAvailable: 1
+  midStationAvailable: 1
+  rightStationAvailable: 1
+  allLetters: []
+  existingLetter: []
+  vagon: {fileID: 5098405118319461354, guid: 4e640b50db6431d45908f0f400aadc10, type: 3}
