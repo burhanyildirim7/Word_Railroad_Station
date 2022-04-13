@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8478637723400586453}
   m_Layer: 0
   m_Name: Kup-P
-  m_TagString: Untagged
+  m_TagString: P
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

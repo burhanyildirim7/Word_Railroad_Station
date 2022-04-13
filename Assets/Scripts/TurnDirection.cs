@@ -30,7 +30,7 @@ public class TurnDirection : MonoBehaviour
     {
         if (newRound)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.DORotate(new Vector3(0, 0, 0),1);
             newRound = false;
         }
   
