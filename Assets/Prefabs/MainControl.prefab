@@ -52,4 +52,4 @@ MonoBehaviour:
   rightStationAvailable: 1
   allLetters: []
   existingLetter: []
-  vagon: {fileID: 5098405118319461354, guid: 4e640b50db6431d45908f0f400aadc10, type: 3}
+  vagon: {fileID: 1240602450559585487, guid: 9ad359e5693d9a14f9ed79e9be19c878, type: 3}

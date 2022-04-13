@@ -77,23 +77,9 @@ public class TrainControl : MonoBehaviour
         {
             transform.parent = null;
 
-            if (TurnDirection.GetComponent<TurnDirection>().right)
-            {
-                transform.DOMove(rightTurnPoint.position, 1).OnComplete(() => OnCompleteRightPoint());
-               
-                transform.LookAt(rightTurnPoint);
+          
 
-            }
-            else if (TurnDirection.GetComponent<TurnDirection>().left)
-            {
-                transform.DOMove(leftTurnPoint.position, 1).OnComplete(() => OnCompleteLeftPoint());
-                transform.LookAt(leftTurnPoint);
-            }
-            else if (TurnDirection.GetComponent<TurnDirection>().mid)
-            {
-                transform.DOMove(midRoad.position, 1);
-                transform.LookAt(midRoad);
-            }
+         
             canTurn = false;
         }
         else
@@ -116,6 +102,7 @@ public class TrainControl : MonoBehaviour
             GameObject.FindGameObjectWithTag("ArrowControl").GetComponent<SwipeTest>().rightArrow.SetActive(false);
             GameObject.FindGameObjectWithTag("ArrowControl").GetComponent<SwipeTest>().leftArrow.SetActive(false);
             GameObject.FindGameObjectWithTag("turnDirection").GetComponent<TurnDirection>().newRound = true;
+            
         }
      
 

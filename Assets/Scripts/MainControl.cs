@@ -21,46 +21,37 @@ public class MainControl : MonoBehaviour
 
      void Start()
     {
-       
 
         
+
     }
     void Update()
     {
-        if (leftStationChild==GameObject.FindGameObjectWithTag("LeftStation").transform.childCount)
-        {
-            leftStationAvailable = false;
-        }
-
-        if (midStationChild == GameObject.FindGameObjectWithTag("MidStation").transform.childCount)
-        {
-            midStationAvailable = false;
-        }
-
-        if (rightStationChild == GameObject.FindGameObjectWithTag("RightStation").transform.childCount)
-        {
-            rightStationAvailable = false;
-        }
         if (ready)
         {
             StartCoroutine(SpawnNewTrain());
         }
-       
+        
 
     }
-    IEnumerator  SpawnNewTrain()
+   public IEnumerator  SpawnNewTrain()
     {
+       
         ready = false;
+      
         int randomNumber;
         randomNumber = Random.Range(0, 9);
         GameObject obje = allLetters[randomNumber];
-        var spawnedLetter = Instantiate(obje, new Vector3(0, 0, 20), Quaternion.Euler(90,180,0));
-        Instantiate(vagon, new Vector3(0, 0, 20), Quaternion.identity);
-        spawnedLetter.AddComponent<TrainControl>();
-        spawnedLetter.AddComponent<Rigidbody>();
-        spawnedLetter.GetComponent<Rigidbody>().useGravity = false;
-        spawnedLetter.AddComponent<BoxCollider>();
-        yield return new WaitForSeconds(6);
+        var spawnedLetter = Instantiate(obje, new Vector3(35, 2, -10), Quaternion.Euler(90,0,0));
+       
+
+        var spawnedTrain = Instantiate(vagon, new Vector3(35, 1, -10), Quaternion.identity);
+        spawnedLetter.transform.parent = spawnedTrain.transform;
+        yield return new WaitForSeconds(9);
+        
+ 
+     
+
         ready = true;
     }
 

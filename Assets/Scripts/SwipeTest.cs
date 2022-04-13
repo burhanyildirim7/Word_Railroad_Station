@@ -9,10 +9,14 @@ public class SwipeTest : MonoBehaviour
     public GameObject leftArrow;
     public GameObject midArrow;
     public GameObject rightArrow;
+    public GameObject barrier1Arrow;
+    public GameObject barrier2Arrow;
 
     public bool arrowIsLeft;
     public bool arrowIsRight;
     public bool arrowIsMid;
+    public bool arrowIsLeftBarrier;
+    public bool arrowIsRightBarrier;
 
     bool canSwipe = false;
   
@@ -41,8 +45,19 @@ public class SwipeTest : MonoBehaviour
                     if (leftArrow.activeSelf)
                     {
                         leftArrow.SetActive(false);
-                        rightArrow.SetActive(true);
+                        barrier1Arrow.SetActive(true);
             
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        rightArrow.SetActive(true);
                     }
      
 
@@ -60,6 +75,8 @@ public class SwipeTest : MonoBehaviour
                         leftArrow.SetActive(true);
                    
                     }
+
+                    
                      canSwipe = false;
                 }
 
@@ -83,10 +100,21 @@ public class SwipeTest : MonoBehaviour
                         else if (rightArrow.activeSelf)
                         {
                             rightArrow.SetActive(false);
-                            leftArrow.SetActive(true);
+                            barrier2Arrow.SetActive(true);
                        
                         }
-                        canSwipe = false;
+                        else if (barrier2Arrow.activeSelf)
+                        {
+                            barrier2Arrow.SetActive(false);
+                            barrier1Arrow.SetActive(true);
+                        }
+
+                        else if (barrier1Arrow.activeSelf)
+                        {
+                            barrier1Arrow.SetActive(false);
+                            leftArrow.SetActive(true);
+                        }
+            canSwipe = false;
                 }      
         }
         
@@ -99,6 +127,8 @@ public class SwipeTest : MonoBehaviour
             arrowIsLeft = true;
             arrowIsMid = false;
             arrowIsRight = false;
+            arrowIsLeftBarrier = false;
+            arrowIsRightBarrier = false;
         }
 
 
@@ -107,7 +137,8 @@ public class SwipeTest : MonoBehaviour
             arrowIsLeft = false;
             arrowIsMid = false;
             arrowIsRight = true;
-
+            arrowIsLeftBarrier = false;
+            arrowIsRightBarrier = false;
         }
 
         if (midArrow.activeSelf)
@@ -115,7 +146,27 @@ public class SwipeTest : MonoBehaviour
             arrowIsLeft = false;
             arrowIsMid = true;
             arrowIsRight = false;
+            arrowIsLeftBarrier = false;
+            arrowIsRightBarrier = false;
 
+        }
+
+        if (barrier1Arrow.activeSelf)
+        {
+            arrowIsLeft = false;
+            arrowIsMid = false;
+            arrowIsRight = false;
+            arrowIsLeftBarrier = true;
+            arrowIsRightBarrier = false;
+        }
+
+        if (barrier2Arrow.activeSelf)
+        {
+            arrowIsLeft = false;
+            arrowIsMid = false;
+            arrowIsRight = false;
+            arrowIsLeftBarrier = false;
+            arrowIsRightBarrier = true;
         }
 
     }

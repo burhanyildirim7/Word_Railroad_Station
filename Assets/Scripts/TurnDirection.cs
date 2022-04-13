@@ -8,6 +8,8 @@ public class TurnDirection : MonoBehaviour
     public bool right;
     public bool left;
     public bool mid;
+    public bool leftBarrier;
+    public bool rightBarrier;
 
     public bool lockTurn = false;
     GameObject ArrowControl;
@@ -39,6 +41,8 @@ public class TurnDirection : MonoBehaviour
         StartCoroutine(TurnDirectionWithMouse());
 
         otherGameobject = other.gameObject;
+
+    
     }
 
     IEnumerator TurnDirectionWithMouse()
@@ -66,5 +70,24 @@ public class TurnDirection : MonoBehaviour
             left = false;
             mid = false;
         }
+
+        if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeftBarrier)
+        {
+            transform.DORotate(new Vector3(0, -90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+            right = false;
+            left = false;
+            mid = false;
+            leftBarrier = true;
+        }
+
+        if (ArrowControl.GetComponent<SwipeTest>().arrowIsRightBarrier)
+        {
+            transform.DORotate(new Vector3(0, 90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+            right = false;
+            left = false;
+            mid = false;
+            rightBarrier = true;
+        }
+
     }
 }
