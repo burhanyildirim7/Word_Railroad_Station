@@ -11653,6 +11653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vagon_tahta_revize
       objectReference: {fileID: 0}
+    - target: {fileID: 5608210021801798955, guid: a6bbbf102fc442049a1e2271e7a2e946, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6bbbf102fc442049a1e2271e7a2e946, type: 3}
 --- !u!4 &4563440077244302049 stripped

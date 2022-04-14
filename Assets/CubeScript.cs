@@ -15,36 +15,34 @@ public class CubeScript : MonoBehaviour
 
     GameObject ArrowControl;
     GameObject TurnDirection;
-  
 
-  
+    public string _tasidigiHarf;
+
+
+
 
     void Start()
     {
-        transform.DOMove(new Vector3(35,1,3), 3).OnComplete(() => turnDonenRay());
+        transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
 
         GetComponent<NavMeshAgent>().enabled = true;
         gameObject.tag = "Untagged";
 
         ArrowControl = GameObject.FindGameObjectWithTag("ArrowControl");
         TurnDirection = GameObject.FindGameObjectWithTag("turnDirection");
-        
 
-        bariyerSol =  GameObject.FindGameObjectWithTag("LeftStation");
+
+        bariyerSol = GameObject.FindGameObjectWithTag("LeftStation");
         bariyerOrta = GameObject.FindGameObjectWithTag("MidStation");
-        bariyerSag =  GameObject.FindGameObjectWithTag("RightStation");
+        bariyerSag = GameObject.FindGameObjectWithTag("RightStation");
         donenRay = GameObject.FindGameObjectWithTag("turnDirection");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-     
-    }
 
     void turnDonenRay()
     {
-        transform.parent = donenRay.transform;
+        //transform.parent = donenRay.transform;
+        transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
         if (ArrowControl.GetComponent<SwipeTest>().arrowIsRight)
         {
             target = bariyerSag;
@@ -70,22 +68,33 @@ public class CubeScript : MonoBehaviour
             target = bariyerEmpty2;
         }
         StartCoroutine(nMesh());
-       
+
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LeftStation" )
+        if (other.gameObject.tag == "LeftStation")
         {
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount-1).gameObject);
+            //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
+
+
         }
 
         else if (other.gameObject.tag == "RightStation")
@@ -93,11 +102,20 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "RightStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+            //bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
         }
 
         else if (other.gameObject.tag == "MidStation")
@@ -105,11 +123,19 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "MidStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+            //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
         }
 
         else if (other.gameObject.tag == "LeftStop")
@@ -117,22 +143,40 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount-1).gameObject);
+            //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
         }
         else if (other.gameObject.tag == "MidStop")
         {
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "MidStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+            //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
         }
 
         else if (other.gameObject.tag == "RightStop")
@@ -140,11 +184,25 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "RightStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+            //bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
-            ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-            ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
+        }
+        else if (other.gameObject.tag == "turnDirection")
+        {
+            transform.parent = donenRay.transform;
+            //TurnDirection = other.gameObject;
         }
 
 

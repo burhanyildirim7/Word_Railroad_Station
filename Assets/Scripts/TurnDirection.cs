@@ -22,7 +22,7 @@ public class TurnDirection : MonoBehaviour
         mid = true;
         lockTurn = true;
         ArrowControl = GameObject.FindGameObjectWithTag("ArrowControl");
-       
+
     }
 
 
@@ -30,10 +30,10 @@ public class TurnDirection : MonoBehaviour
     {
         if (newRound)
         {
-            transform.DORotate(new Vector3(0, 0, 0),1);
+            transform.DORotate(new Vector3(0, 90, 0), 1);
             newRound = false;
         }
-  
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,7 +42,7 @@ public class TurnDirection : MonoBehaviour
 
         otherGameobject = other.gameObject;
 
-    
+
     }
 
     IEnumerator TurnDirectionWithMouse()
@@ -50,7 +50,7 @@ public class TurnDirection : MonoBehaviour
         yield return new WaitForSeconds(1);
         if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeft)
         {
-            transform.DORotate(new Vector3(0, -60, 0), 1).OnComplete(()=> otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+            transform.DORotate(new Vector3(0, 50, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
             right = false;
             left = true;
             mid = false;
@@ -65,7 +65,7 @@ public class TurnDirection : MonoBehaviour
         }
         if (ArrowControl.GetComponent<SwipeTest>().arrowIsRight)
         {
-            transform.DORotate(new Vector3(0, 60, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+            transform.DORotate(new Vector3(0, 130, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
             right = true;
             left = false;
             mid = false;

@@ -21,19 +21,12 @@ TagManager:
   - LeftTurnPoint
   - Stop
   - Letters
-  - K
-  - O
-  - L
-  - U
-  - P
-  - Y
-  - A
-  - Z
   - MidStop
   - LeftStop
   - RightStop
   - ArrowControl
   - vagon
+  - KelimeListesi
   layers:
   - Default
   - TransparentFX

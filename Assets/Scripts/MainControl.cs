@@ -13,48 +13,48 @@ public class MainControl : MonoBehaviour
     public bool rightStationAvailable = true;
 
     public List<GameObject> allLetters = new List<GameObject>();
-    public List<GameObject> existingLetter = new List<GameObject>();
-
 
     public GameObject vagon;
     bool ready = true;
 
-     void Start()
+    void Start()
     {
 
-        
+
 
     }
+
     void Update()
     {
         if (ready)
         {
             StartCoroutine(SpawnNewTrain());
         }
-        
+
 
     }
-   public IEnumerator  SpawnNewTrain()
+
+    public IEnumerator SpawnNewTrain()
     {
-       
+
         ready = false;
-      
+
         int randomNumber;
         randomNumber = Random.Range(0, allLetters.Count);
         GameObject obje = allLetters[randomNumber];
-        var spawnedLetter = Instantiate(obje, new Vector3(35, 2, -10), Quaternion.Euler(90,0,0));
-       
+        var spawnedLetter = Instantiate(obje, new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
 
-        var spawnedTrain = Instantiate(vagon, new Vector3(35, 1, -10), Quaternion.identity);
+
+        var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
         spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
         spawnedLetter.transform.parent = spawnedTrain.transform;
-        yield return new WaitForSeconds(9);
-        
-        
-     
+        yield return new WaitForSeconds(10);
+
+
+
 
         ready = true;
     }
 
-    
+
 }
