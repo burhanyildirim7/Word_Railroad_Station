@@ -40,7 +40,7 @@ public class SwipeTest : MonoBehaviour
         CheckArrowDirection();
 
 
-        FunctionAccordingToArrowDirection();
+        // FunctionAccordingToArrowDirection();
 
         if (Input.GetMouseButtonDown(0))
         {

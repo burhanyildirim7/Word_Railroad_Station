@@ -23,7 +23,9 @@ public class CubeScript : MonoBehaviour
 
     void Start()
     {
-        transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
+
+        _tasidigiHarf = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.name;
+        Invoke("HareketiBaslat", 1f);
 
         GetComponent<NavMeshAgent>().enabled = true;
         gameObject.tag = "Untagged";
@@ -36,6 +38,11 @@ public class CubeScript : MonoBehaviour
         bariyerOrta = GameObject.FindGameObjectWithTag("MidStation");
         bariyerSag = GameObject.FindGameObjectWithTag("RightStation");
         donenRay = GameObject.FindGameObjectWithTag("turnDirection");
+    }
+
+    private void HareketiBaslat()
+    {
+        transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
     }
 
 
@@ -79,6 +86,10 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
+
+            LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
+            LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+
             //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
@@ -143,6 +154,10 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
+
+            LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
+            LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+
             //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
