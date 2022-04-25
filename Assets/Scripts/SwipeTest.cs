@@ -7,10 +7,10 @@ public class SwipeTest : MonoBehaviour
     public Swipe swipeControls;
 
     public bool _level1;
-    public bool _level2;
-    public bool _level3;
-    public bool _level4;
-    public bool _level5;
+    //public bool _level2;
+    //public bool _level3;
+    //public bool _level4;
+    // public bool _level5;
 
     public GameObject leftArrow;
     public GameObject midArrow;
@@ -26,11 +26,13 @@ public class SwipeTest : MonoBehaviour
 
     bool canSwipe = false;
 
+    private LevelCanvasScript _levelCanvasScript;
+
     // Start is called before the first frame update
     void Start()
     {
         OkSifirla();
-
+        _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
     }
 
     // Update is called once per frame
@@ -51,10 +53,19 @@ public class SwipeTest : MonoBehaviour
         {
             if (swipeControls.SwipeLeft && canSwipe)
             {
+
                 if (rightArrow.activeSelf)
                 {
-                    rightArrow.SetActive(false);
-                    leftArrow.SetActive(true);
+                    if (_levelCanvasScript._peron1Bitti)
+                    {
+
+                    }
+                    else
+                    {
+                        rightArrow.SetActive(false);
+                        leftArrow.SetActive(true);
+                    }
+
 
                 }
 
@@ -67,14 +78,23 @@ public class SwipeTest : MonoBehaviour
             {
                 if (leftArrow.activeSelf)
                 {
-                    leftArrow.SetActive(false);
-                    rightArrow.SetActive(true);
+                    if (_levelCanvasScript._peron2Bitti)
+                    {
+
+                    }
+                    else
+                    {
+                        leftArrow.SetActive(false);
+                        rightArrow.SetActive(true);
+                    }
+
 
                 }
 
                 canSwipe = false;
             }
         }
+        /*
         else if (_level2)
         {
             if (swipeControls.SwipeLeft && canSwipe)
@@ -154,7 +174,8 @@ public class SwipeTest : MonoBehaviour
                 canSwipe = false;
             }
         }
-        else if (_level3)
+        */
+        else
         {
             if (swipeControls.SwipeLeft && canSwipe)
             {
@@ -172,23 +193,68 @@ public class SwipeTest : MonoBehaviour
                 }
                 else if (barrier2Arrow.activeSelf)
                 {
-                    barrier2Arrow.SetActive(false);
-                    rightArrow.SetActive(true);
+                    if (_levelCanvasScript._peron2Bitti)
+                    {
+                        if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
+                        {
+                            barrier2Arrow.SetActive(false);
+                            leftArrow.SetActive(true);
+                        }
+                        else
+                        {
+                            barrier2Arrow.SetActive(false);
+                            midArrow.SetActive(true);
+                        }
+
+                    }
+                    else
+                    {
+                        barrier2Arrow.SetActive(false);
+                        rightArrow.SetActive(true);
+                    }
+
                 }
 
 
                 else if (rightArrow.activeSelf)
                 {
-                    rightArrow.SetActive(false);
-                    midArrow.SetActive(true);
+                    if (_levelCanvasScript._peron3Bitti)
+                    {
+                        if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
+                        {
+                            rightArrow.SetActive(false);
+                            barrier1Arrow.SetActive(true);
+                        }
+                        else
+                        {
+                            rightArrow.SetActive(false);
+                            leftArrow.SetActive(true);
+                        }
+
+                    }
+                    else
+                    {
+                        rightArrow.SetActive(false);
+                        midArrow.SetActive(true);
+                    }
+
 
                 }
 
 
                 else if (midArrow.activeSelf)
                 {
-                    midArrow.SetActive(false);
-                    leftArrow.SetActive(true);
+                    if (_levelCanvasScript._peron1Bitti)
+                    {
+                        midArrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+                    }
+                    else
+                    {
+                        midArrow.SetActive(false);
+                        leftArrow.SetActive(true);
+                    }
+
 
                 }
 
@@ -202,15 +268,42 @@ public class SwipeTest : MonoBehaviour
             {
                 if (leftArrow.activeSelf)
                 {
-                    leftArrow.SetActive(false);
-                    midArrow.SetActive(true);
+                    if (_levelCanvasScript._peron3Bitti)
+                    {
+                        if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
+                        {
+                            leftArrow.SetActive(false);
+                            barrier2Arrow.SetActive(true);
+                        }
+                        else
+                        {
+                            leftArrow.SetActive(false);
+                            rightArrow.SetActive(true);
+                        }
+
+                    }
+                    else
+                    {
+                        leftArrow.SetActive(false);
+                        midArrow.SetActive(true);
+                    }
+
 
                 }
 
                 else if (midArrow.activeSelf)
                 {
-                    midArrow.SetActive(false);
-                    rightArrow.SetActive(true);
+                    if (_levelCanvasScript._peron2Bitti)
+                    {
+                        midArrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else
+                    {
+                        midArrow.SetActive(false);
+                        rightArrow.SetActive(true);
+                    }
+
 
                 }
                 else if (rightArrow.activeSelf)
@@ -227,12 +320,31 @@ public class SwipeTest : MonoBehaviour
 
                 else if (barrier1Arrow.activeSelf)
                 {
-                    barrier1Arrow.SetActive(false);
-                    leftArrow.SetActive(true);
+                    if (_levelCanvasScript._peron1Bitti)
+                    {
+                        if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
+                        {
+                            barrier1Arrow.SetActive(false);
+                            rightArrow.SetActive(true);
+                        }
+                        else
+                        {
+                            barrier1Arrow.SetActive(false);
+                            midArrow.SetActive(true);
+                        }
+
+                    }
+                    else
+                    {
+                        barrier1Arrow.SetActive(false);
+                        leftArrow.SetActive(true);
+                    }
+
                 }
                 canSwipe = false;
             }
         }
+        /*
         else if (_level4)
         {
             if (swipeControls.SwipeLeft && canSwipe)
@@ -391,6 +503,7 @@ public class SwipeTest : MonoBehaviour
                 canSwipe = false;
             }
         }
+        */
 
     }
 
@@ -451,7 +564,10 @@ public class SwipeTest : MonoBehaviour
     {
         if (_level1)
         {
+
             leftArrow.SetActive(true);
+
+
         }
         else
         {

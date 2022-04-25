@@ -17,11 +17,23 @@ public class LevelCanvasScript : MonoBehaviour
     public char[] _peron3kelime;
 
     public List<char> _peron1gelenkelime = new List<char>();
+    public List<char> _peron2gelenkelime = new List<char>();
+    public List<char> _peron3gelenkelime = new List<char>();
 
 
     public List<char> _peron1kelimeliste = new List<char>();
     public List<char> _peron2kelimeliste = new List<char>();
     public List<char> _peron3kelimeliste = new List<char>();
+
+    public GameObject _peron1Bariyer;
+    public GameObject _peron2Bariyer;
+    public GameObject _peron3Bariyer;
+
+    public bool _peron1Bitti;
+    public bool _peron2Bitti;
+    public bool _peron3Bitti;
+
+
 
 
     private void Awake()
@@ -35,6 +47,27 @@ public class LevelCanvasScript : MonoBehaviour
     void Start()
     {
         _kelimeListesi = GameObject.FindGameObjectWithTag("KelimeListesi").GetComponent<KelimeListesi>();
+
+        if (_level1)
+        {
+            _peron1Bariyer.SetActive(false);
+            _peron2Bariyer.SetActive(false);
+
+            _peron1Bitti = false;
+            _peron2Bitti = false;
+        }
+        else
+        {
+            _peron1Bariyer.SetActive(false);
+            _peron2Bariyer.SetActive(false);
+            _peron3Bariyer.SetActive(false);
+
+            _peron1Bitti = false;
+            _peron2Bitti = false;
+            _peron3Bitti = false;
+        }
+
+
         PeronaKelimeYazdır();
 
     }
@@ -44,6 +77,10 @@ public class LevelCanvasScript : MonoBehaviour
     {
 
     }
+
+
+    //--------------PERON 1 KELIME KONTROL ETME------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     public void Peron1KelimeleriKontrolEt()
     {
@@ -60,6 +97,14 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
+            if (_peron1gelenkelime.Count == 0)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -76,6 +121,14 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
+            if (_peron1gelenkelime.Count == 1)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -85,14 +138,53 @@ public class LevelCanvasScript : MonoBehaviour
             if (_peron1kelime[2].ToString() == _peron1gelenkelime[2].ToString())
             {
                 transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron1gelenkelime.Count == 3 && _peron1kelimeliste.Count == 3)
+                {
+                    if (transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("ILK PERON TAMAMLANDI");
+                        _peron1Bariyer.SetActive(true);
+                        _peron1Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("ILK PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+
             }
             else
             {
                 transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron1gelenkelime.Count == 3 && _peron1kelimeliste.Count == 3)
+                {
+
+                    Debug.Log("ILK PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+
             }
         }
         else
         {
+            if (_peron1gelenkelime.Count == 2)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -101,14 +193,51 @@ public class LevelCanvasScript : MonoBehaviour
             if (_peron1kelime[3].ToString() == _peron1gelenkelime[3].ToString())
             {
                 transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron1gelenkelime.Count == 4 && _peron1kelimeliste.Count == 4)
+                {
+                    if (transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("ILK PERON TAMAMLANDI");
+                        _peron1Bariyer.SetActive(true);
+                        _peron1Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("ILK PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
             }
             else
             {
                 transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron1gelenkelime.Count == 4 && _peron1kelimeliste.Count == 4)
+                {
+
+                    Debug.Log("ILK PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
             }
         }
         else
         {
+            if (_peron1gelenkelime.Count == 3)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -117,14 +246,51 @@ public class LevelCanvasScript : MonoBehaviour
             if (_peron1kelime[4].ToString() == _peron1gelenkelime[4].ToString())
             {
                 transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron1gelenkelime.Count == 5 && _peron1kelimeliste.Count == 5)
+                {
+                    if (transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("ILK PERON TAMAMLANDI");
+                        _peron1Bariyer.SetActive(true);
+                        _peron1Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("ILK PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
             }
             else
             {
                 transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron1gelenkelime.Count == 5 && _peron1kelimeliste.Count == 5)
+                {
+
+                    Debug.Log("ILK PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
             }
         }
         else
         {
+            if (_peron1gelenkelime.Count == 4)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -133,14 +299,51 @@ public class LevelCanvasScript : MonoBehaviour
             if (_peron1kelime[5].ToString() == _peron1gelenkelime[5].ToString())
             {
                 transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron1gelenkelime.Count == 6 && _peron1kelimeliste.Count == 6)
+                {
+                    if (transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("ILK PERON TAMAMLANDI");
+                        _peron1Bariyer.SetActive(true);
+                        _peron1Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("ILK PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
             }
             else
             {
                 transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron1gelenkelime.Count == 6 && _peron1kelimeliste.Count == 6)
+                {
+
+                    Debug.Log("ILK PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
             }
         }
         else
         {
+            if (_peron1gelenkelime.Count == 5)
+            {
+                transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -149,10 +352,551 @@ public class LevelCanvasScript : MonoBehaviour
     }
 
 
+    //--------------PERON 2 KELIME KONTROL ETME------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    public void Peron2KelimeleriKontrolEt()
+    {
+        if (_peron2gelenkelime.Count == 1 && _peron2kelimeliste.Count >= 3)
+        {
+            if (_peron2kelime[0].ToString() == _peron2gelenkelime[0].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.green;
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.red;
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 0)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron2gelenkelime.Count == 2 && _peron2kelimeliste.Count >= 3)
+        {
+            if (_peron2kelime[1].ToString() == _peron2gelenkelime[1].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.green;
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.red;
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 1)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+
+        if (_peron2gelenkelime.Count == 3 && _peron2kelimeliste.Count >= 3)
+        {
+            if (_peron2kelime[2].ToString() == _peron2gelenkelime[2].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron2gelenkelime.Count == 3 && _peron2kelimeliste.Count == 3)
+                {
+                    if (transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("IKINCI PERON TAMAMLANDI");
+                        _peron2Bariyer.SetActive(true);
+                        _peron2Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("IKINCI PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron2gelenkelime.Count == 3 && _peron2kelimeliste.Count == 3)
+                {
+
+                    Debug.Log("IKINCI PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 2)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron2gelenkelime.Count == 4 && _peron2kelimeliste.Count >= 4)
+        {
+            if (_peron2kelime[3].ToString() == _peron2gelenkelime[3].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron2gelenkelime.Count == 4 && _peron2kelimeliste.Count == 4)
+                {
+                    if (transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("IKINCI PERON TAMAMLANDI");
+                        _peron2Bariyer.SetActive(true);
+                        _peron2Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("IKINCI PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron2gelenkelime.Count == 4 && _peron2kelimeliste.Count == 4)
+                {
+
+                    Debug.Log("IKINCI PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 3)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron2gelenkelime.Count == 5 && _peron2kelimeliste.Count >= 5)
+        {
+            if (_peron2kelime[4].ToString() == _peron2gelenkelime[4].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron2gelenkelime.Count == 5 && _peron2kelimeliste.Count == 5)
+                {
+                    if (transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("IKINCI PERON TAMAMLANDI");
+                        _peron2Bariyer.SetActive(true);
+                        _peron2Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("IKINCI PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron2gelenkelime.Count == 5 && _peron2kelimeliste.Count == 5)
+                {
+
+                    Debug.Log("IKINCI PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 4)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron2gelenkelime.Count == 6 && _peron2kelimeliste.Count >= 6)
+        {
+            if (_peron2kelime[5].ToString() == _peron2gelenkelime[5].ToString())
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron2gelenkelime.Count == 6 && _peron2kelimeliste.Count == 6)
+                {
+                    if (transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("IKINCI PERON TAMAMLANDI");
+                        _peron2Bariyer.SetActive(true);
+                        _peron2Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("IKINCI PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron2gelenkelime.Count == 6 && _peron2kelimeliste.Count == 6)
+                {
+
+                    Debug.Log("IKINCI PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron2gelenkelime.Count == 5)
+            {
+                transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+
+    }
+
+
+    //--------------PERON 3 KELIME KONTROL ETME------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    public void Peron3KelimeleriKontrolEt()
+    {
+        if (_peron3gelenkelime.Count == 1 && _peron3kelimeliste.Count >= 3)
+        {
+            if (_peron3kelime[0].ToString() == _peron3gelenkelime[0].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.green;
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.red;
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 0)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron3gelenkelime.Count == 2 && _peron3kelimeliste.Count >= 3)
+        {
+            if (_peron3kelime[1].ToString() == _peron3gelenkelime[1].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.green;
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.red;
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 1)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+
+        if (_peron3gelenkelime.Count == 3 && _peron3kelimeliste.Count >= 3)
+        {
+            if (_peron3kelime[2].ToString() == _peron3gelenkelime[2].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron3gelenkelime.Count == 3 && _peron3kelimeliste.Count == 3)
+                {
+                    if (transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("UCUNCU PERON TAMAMLANDI");
+                        _peron3Bariyer.SetActive(true);
+                        _peron3Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("UCUNCU PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron3gelenkelime.Count == 3 && _peron3kelimeliste.Count == 3)
+                {
+
+                    Debug.Log("UCUNCU PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 2)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron3gelenkelime.Count == 4 && _peron3kelimeliste.Count >= 4)
+        {
+            if (_peron3kelime[3].ToString() == _peron3gelenkelime[3].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron3gelenkelime.Count == 4 && _peron3kelimeliste.Count == 4)
+                {
+                    if (transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("UCUNCU PERON TAMAMLANDI");
+                        _peron3Bariyer.SetActive(true);
+                        _peron3Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("UCUNCU PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron3gelenkelime.Count == 4 && _peron3kelimeliste.Count == 4)
+                {
+
+                    Debug.Log("UCUNCU PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 3)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron3gelenkelime.Count == 5 && _peron3kelimeliste.Count >= 5)
+        {
+            if (_peron3kelime[4].ToString() == _peron3gelenkelime[4].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron3gelenkelime.Count == 5 && _peron3kelimeliste.Count == 5)
+                {
+                    if (transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("UCUNCU PERON TAMAMLANDI");
+                        _peron3Bariyer.SetActive(true);
+                        _peron3Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("UCUNCU PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron3gelenkelime.Count == 5 && _peron3kelimeliste.Count == 5)
+                {
+
+                    Debug.Log("UCUNCU PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 4)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+
+        if (_peron3gelenkelime.Count == 6 && _peron3kelimeliste.Count >= 6)
+        {
+            if (_peron3kelime[5].ToString() == _peron3gelenkelime[5].ToString())
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.green;
+
+                if (_peron3gelenkelime.Count == 6 && _peron3kelimeliste.Count == 6)
+                {
+                    if (transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color == Color.green && transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color == Color.green)
+                    {
+                        Debug.Log("UCUNCU PERON TAMAMLANDI");
+                        _peron3Bariyer.SetActive(true);
+                        _peron3Bitti = true;
+                    }
+                    else
+                    {
+                        Debug.Log("UCUNCU PERON YANLIS");
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.red;
+
+                if (_peron3gelenkelime.Count == 6 && _peron3kelimeliste.Count == 6)
+                {
+
+                    Debug.Log("UCUNCU PERON YANLIS");
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (_peron3gelenkelime.Count == 5)
+            {
+                transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+            }
+            else
+            {
+
+            }
+
+        }
+    }
+
+
     [System.Obsolete]
     private void PeronaKelimeYazdır()
     {
 
+        //--------------PERON 1 KELIME YAZDIRMA------------------------------------------------------------------------------------------------------------------------------------------------------
 
         if (transform.FindChild("Peron1Kelime") != null)
         {
@@ -164,7 +908,7 @@ public class LevelCanvasScript : MonoBehaviour
             }
             else
             {
-                kacharfli = Random.Range(0, 4);
+                kacharfli = Random.Range(1, 4);
             }
 
             if (kacharfli == 0)
@@ -555,6 +1299,861 @@ public class LevelCanvasScript : MonoBehaviour
                     else
                     {
                         transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+
+
+
+
+
+
+        }
+        else
+        {
+            Debug.Log("Boyle Bir Sey Yok AGA");
+        }
+
+
+
+        //--------------PERON 2 KELIME YAZDIRMA------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        if (transform.FindChild("Peron2Kelime") != null)
+        {
+            int kacharfli;
+
+            if (_level1)
+            {
+                kacharfli = 0;
+            }
+            else
+            {
+                kacharfli = Random.Range(1, 4);
+            }
+
+            if (kacharfli == 0)
+            {
+                _peron2kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    _peron2kelimeliste.Add(_peron2kelime[i]);
+                }
+
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron2kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron2kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron2kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron2kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron2kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron2kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf4") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf5") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 1)
+            {
+                _peron2kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 4; i++)
+                {
+                    _peron2kelimeliste.Add(_peron2kelime[i]);
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron2kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron2kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron2kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron2kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron2kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron2kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron2kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron2kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf5") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 2)
+            {
+                _peron2kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    _peron2kelimeliste.Add(_peron2kelime[i]);
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron2kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron2kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron2kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron2kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron2kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron2kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron2kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron2kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf5") != null)
+                {
+                    if (_peron2kelime[4].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = _peron2kelime[4].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 3)
+            {
+                _peron2kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 6; i++)
+                {
+                    _peron2kelimeliste.Add(_peron2kelime[i]);
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron2kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron2kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron2kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron2kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron2kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron2kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron2kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron2kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf5") != null)
+                {
+                    if (_peron2kelime[4].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = _peron2kelime[4].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(1).gameObject.transform.FindChild("Harf6") != null)
+                {
+                    if (_peron2kelime[5].ToString() != null)
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = _peron2kelime[5].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+
+
+
+
+
+
+        }
+        else
+        {
+            Debug.Log("Boyle Bir Sey Yok AGA");
+        }
+
+
+        //--------------PERON 3 KELIME YAZDIRMA------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        if (transform.FindChild("Peron3Kelime") != null)
+        {
+            int kacharfli;
+
+            if (_level1)
+            {
+                kacharfli = 0;
+            }
+            else
+            {
+                kacharfli = Random.Range(1, 4);
+            }
+
+            if (kacharfli == 0)
+            {
+                _peron3kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    _peron3kelimeliste.Add(_peron3kelime[i]);
+                }
+
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron3kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron3kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron3kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron3kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron3kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron3kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf4") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf5") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 1)
+            {
+                _peron3kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 4; i++)
+                {
+                    _peron3kelimeliste.Add(_peron3kelime[i]);
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron3kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron3kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron3kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron3kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron3kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron3kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron3kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron3kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf5") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 2)
+            {
+                _peron3kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    _peron3kelimeliste.Add(_peron3kelime[i]);
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron3kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron3kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron3kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron3kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron3kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron3kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron3kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron3kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf5") != null)
+                {
+                    if (_peron3kelime[4].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = _peron3kelime[4].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf6") != null)
+                {
+
+                    transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
+
+                }
+                else
+                {
+
+                }
+            }
+            else if (kacharfli == 3)
+            {
+                _peron3kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
+
+                for (int i = 0; i < 6; i++)
+                {
+                    _peron3kelimeliste.Add(_peron3kelime[i]);
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf1") != null)
+                {
+                    if (_peron3kelime[0].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = _peron3kelime[0].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = " ";
+                    }
+
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf2") != null)
+                {
+                    if (_peron3kelime[1].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = _peron3kelime[1].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf3") != null)
+                {
+                    if (_peron3kelime[2].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = _peron3kelime[2].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf4") != null)
+                {
+                    if (_peron3kelime[3].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = _peron3kelime[3].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf5") != null)
+                {
+                    if (_peron3kelime[4].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = _peron3kelime[4].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().text = " ";
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (transform.GetChild(2).gameObject.transform.FindChild("Harf6") != null)
+                {
+                    if (_peron3kelime[5].ToString() != null)
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = _peron3kelime[5].ToString();
+                    }
+                    else
+                    {
+                        transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text = " ";
                     }
                 }
                 else

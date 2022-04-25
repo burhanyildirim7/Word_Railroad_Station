@@ -18,13 +18,25 @@ public class CubeScript : MonoBehaviour
 
     public string _tasidigiHarf;
 
+    public bool _bombaMi;
 
+    private LevelCanvasScript _levelCanvasScript;
+
+    public ParticleSystem _bombaPatlamaEfekt;
 
 
     void Start()
     {
+        if (_bombaMi)
+        {
 
-        _tasidigiHarf = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.name;
+        }
+        else
+        {
+            _tasidigiHarf = gameObject.transform.GetChild(6).gameObject.transform.GetChild(0).gameObject.name;
+        }
+
+
         Invoke("HareketiBaslat", 1f);
 
         GetComponent<NavMeshAgent>().enabled = true;
@@ -38,6 +50,8 @@ public class CubeScript : MonoBehaviour
         bariyerOrta = GameObject.FindGameObjectWithTag("MidStation");
         bariyerSag = GameObject.FindGameObjectWithTag("RightStation");
         donenRay = GameObject.FindGameObjectWithTag("turnDirection");
+
+        _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
     }
 
     private void HareketiBaslat()
@@ -87,22 +101,60 @@ public class CubeScript : MonoBehaviour
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
 
-            LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
-            LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+            if (_bombaMi)
+            {
+                _bombaPatlamaEfekt.Play();
+                Destroy(gameObject, 0.3f);
+            }
+            else
+            {
+                LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
+                LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+            }
+
 
             //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
             if (ArrowControl.GetComponent<SwipeTest>()._level1)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
+
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
+
             }
 
 
@@ -113,19 +165,59 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "RightStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
+
+            if (_bombaMi)
+            {
+                _bombaPatlamaEfekt.Play();
+                Destroy(gameObject, 0.3f);
+            }
+            else
+            {
+                LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
+                LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+            }
+
+
             //bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
             if (ArrowControl.GetComponent<SwipeTest>()._level1)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
             }
         }
 
@@ -134,84 +226,307 @@ public class CubeScript : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "MidStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
-            //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
-            TurnDirection.GetComponent<TurnDirection>().newRound = true;
-            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+
+            if (_bombaMi)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                _bombaPatlamaEfekt.Play();
+                Destroy(gameObject, 0.3f);
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
+                LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+            }
+
+            //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
+            TurnDirection.GetComponent<TurnDirection>().newRound = true;
+
+            if (ArrowControl.GetComponent<SwipeTest>()._level1)
+            {
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
+            }
+            else
+            {
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
             }
         }
 
         else if (other.gameObject.tag == "LeftStop")
         {
             GetComponent<NavMeshAgent>().enabled = false;
-            gameObject.tag = "LeftStop";
+
             gameObject.GetComponent<CubeScript>().enabled = false;
 
-            LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
-            LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+            if (gameObject.tag != "LeftStop")
+            {
+                if (_bombaMi)
+                {
+                    LevelCanvasScript.instance._peron1gelenkelime.RemoveAt(LevelCanvasScript.instance._peron1gelenkelime.Count - 1);
+                    LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                    _bombaPatlamaEfekt.Play();
+                    Destroy(other.gameObject, 0.3f);
+                    Destroy(gameObject, 0.3f);
+                }
+                else
+                {
+                    if (LevelCanvasScript.instance._peron1gelenkelime.Count == 6)
+                    {
+                        transform.DOMoveY(2, 0.5f);
+                        transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
+                        Destroy(gameObject, 1f);
+                    }
+                    else
+                    {
+                        LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
+                        LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                    }
+
+                }
+            }
+            else
+            {
+
+            }
+
+            gameObject.tag = "LeftStop";
+
+
+
 
             //bariyerSol.GetComponent<LeftStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
             if (ArrowControl.GetComponent<SwipeTest>()._level1)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
             }
         }
         else if (other.gameObject.tag == "MidStop")
         {
             GetComponent<NavMeshAgent>().enabled = false;
-            gameObject.tag = "MidStop";
+
             gameObject.GetComponent<CubeScript>().enabled = false;
+
+            if (gameObject.tag != "MidStop")
+            {
+                if (_bombaMi)
+                {
+                    LevelCanvasScript.instance._peron3gelenkelime.RemoveAt(LevelCanvasScript.instance._peron3gelenkelime.Count - 1);
+                    LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                    _bombaPatlamaEfekt.Play();
+                    Destroy(other.gameObject, 0.3f);
+                    Destroy(gameObject, 0.3f);
+                }
+                else
+                {
+                    if (LevelCanvasScript.instance._peron3gelenkelime.Count == 6)
+                    {
+                        transform.DOMoveY(2, 0.5f);
+                        transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
+                        Destroy(gameObject, 1f);
+                    }
+                    else
+                    {
+                        LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
+                        LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+            gameObject.tag = "MidStop";
+
+
             //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
             if (ArrowControl.GetComponent<SwipeTest>()._level1)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
             }
         }
 
         else if (other.gameObject.tag == "RightStop")
         {
             GetComponent<NavMeshAgent>().enabled = false;
-            gameObject.tag = "RightStop";
+
             gameObject.GetComponent<CubeScript>().enabled = false;
+
+            if (gameObject.tag != "RightStop")
+            {
+                if (_bombaMi)
+                {
+                    LevelCanvasScript.instance._peron2gelenkelime.RemoveAt(LevelCanvasScript.instance._peron2gelenkelime.Count - 1);
+                    LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                    _bombaPatlamaEfekt.Play();
+                    Destroy(other.gameObject, 0.3f);
+                    Destroy(gameObject, 0.3f);
+                }
+                else
+                {
+                    if (LevelCanvasScript.instance._peron2gelenkelime.Count == 6)
+                    {
+                        transform.DOMoveY(2, 0.5f);
+                        transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
+                        Destroy(gameObject, 1f);
+                    }
+                    else
+                    {
+                        LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
+                        LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+            gameObject.tag = "RightStop";
+
+
+
             //bariyerSag.GetComponent<RightStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
 
             if (ArrowControl.GetComponent<SwipeTest>()._level1)
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                if (_levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                }
             }
             else
             {
-                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
-                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                if (_levelCanvasScript._peron3Bitti)
+                {
+                    if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+                    else
+                    {
+                        ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                        ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                        ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                    }
+
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+                }
             }
         }
         else if (other.gameObject.tag == "turnDirection")

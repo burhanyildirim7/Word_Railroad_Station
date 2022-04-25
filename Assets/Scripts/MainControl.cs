@@ -22,10 +22,18 @@ public class MainControl : MonoBehaviour
     public List<GameObject> _yollanacakHarfler = new List<GameObject>();
     public List<int> _indexListesi = new List<int>();
 
+    private LevelCanvasScript _levelCanvasScript;
+
+    private int _randomBomba;
+
+    public int _bombaSikligi;
+
+    public GameObject _bombaObject;
+
     void Start()
     {
-
-        GönderilecekHarfListesiOlustur();
+        Invoke("GönderilecekHarfListesiOlustur", 0.5f);
+        //GönderilecekHarfListesiOlustur();
 
     }
 
@@ -33,6 +41,7 @@ public class MainControl : MonoBehaviour
     {
         if (ready)
         {
+
             StartCoroutine(SpawnNewTrain());
         }
 
@@ -41,13 +50,49 @@ public class MainControl : MonoBehaviour
 
     public void GönderilecekHarfListesiOlustur()
     {
-        if (LevelCanvasScript.instance._level1)
+        _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+
+        if (_levelCanvasScript._level1)
         {
 
-
-            for (int i = 0; i < LevelCanvasScript.instance._peron1kelimeliste.Count; i++)
+            for (int i = 0; i < _levelCanvasScript._peron1kelimeliste.Count; i++)
             {
-                char harf = LevelCanvasScript.instance._peron1kelimeliste[i];
+
+                char harf = _levelCanvasScript._peron1kelimeliste[i];
+                _indexListesi.Add(allLettersHarf.BinarySearch(harf.ToString()));
+
+            }
+
+            for (int i = 0; i < _levelCanvasScript._peron2kelimeliste.Count; i++)
+            {
+
+                char harf = _levelCanvasScript._peron2kelimeliste[i];
+                _indexListesi.Add(allLettersHarf.BinarySearch(harf.ToString()));
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _levelCanvasScript._peron1kelimeliste.Count; i++)
+            {
+
+                char harf = _levelCanvasScript._peron1kelimeliste[i];
+                _indexListesi.Add(allLettersHarf.BinarySearch(harf.ToString()));
+
+            }
+
+            for (int i = 0; i < _levelCanvasScript._peron2kelimeliste.Count; i++)
+            {
+
+                char harf = _levelCanvasScript._peron2kelimeliste[i];
+                _indexListesi.Add(allLettersHarf.BinarySearch(harf.ToString()));
+
+            }
+
+            for (int i = 0; i < _levelCanvasScript._peron3kelimeliste.Count; i++)
+            {
+
+                char harf = _levelCanvasScript._peron3kelimeliste[i];
                 _indexListesi.Add(allLettersHarf.BinarySearch(harf.ToString()));
 
             }
@@ -57,20 +102,47 @@ public class MainControl : MonoBehaviour
     public IEnumerator SpawnNewTrain()
     {
 
-
+        Debug.Log("girdi");
 
         ready = false;
 
-        int randomNumber;
-        randomNumber = Random.Range(0, _indexListesi.Count);
-        GameObject obje = allLetters[_indexListesi[randomNumber]];
-        var spawnedLetter = Instantiate(obje, new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
+        yield return new WaitForSeconds(1);
+
+        _randomBomba = Random.Range(0, _bombaSikligi);
+
+        if (_randomBomba == 0)
+        {
+            //int randomNumber;
+            //randomNumber = Random.Range(0, _indexListesi.Count);
+            //GameObject obje = allLetters[_indexListesi[randomNumber]];
+            //Debug.Log("sayı bu " + _indexListesi[randomNumber]);
+            var spawnedLetter = Instantiate(_bombaObject, new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
+
+            var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
+            //spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+            spawnedLetter.transform.parent = spawnedTrain.transform;
+            spawnedTrain.GetComponent<CubeScript>()._bombaMi = true;
+            yield return new WaitForSeconds(10);
+        }
+        else
+        {
+            int randomNumber;
+            randomNumber = Random.Range(0, _indexListesi.Count);
+            GameObject obje = allLetters[_indexListesi[randomNumber]];
+            //Debug.Log("sayı bu " + _indexListesi[randomNumber]);
+            var spawnedLetter = Instantiate(obje, new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
+
+            var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
+            spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+            spawnedLetter.transform.parent = spawnedTrain.transform;
+            spawnedTrain.GetComponent<CubeScript>()._bombaMi = false;
+            yield return new WaitForSeconds(10);
+        }
 
 
-        var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
-        spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
-        spawnedLetter.transform.parent = spawnedTrain.transform;
-        yield return new WaitForSeconds(10);
+
+
+
 
 
 

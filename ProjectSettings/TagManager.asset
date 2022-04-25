@@ -27,6 +27,15 @@ TagManager:
   - ArrowControl
   - vagon
   - KelimeListesi
+  - A
+  - K
+  - L
+  - O
+  - P
+  - U
+  - Y
+  - Z
+  - LevelCanvas
   layers:
   - Default
   - TransparentFX
