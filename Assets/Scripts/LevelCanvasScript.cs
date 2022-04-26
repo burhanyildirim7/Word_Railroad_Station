@@ -33,6 +33,10 @@ public class LevelCanvasScript : MonoBehaviour
     public bool _peron2Bitti;
     public bool _peron3Bitti;
 
+    public bool _peron1Yanlis;
+    public bool _peron2Yanlis;
+    public bool _peron3Yanlis;
+
 
 
 
@@ -55,6 +59,9 @@ public class LevelCanvasScript : MonoBehaviour
 
             _peron1Bitti = false;
             _peron2Bitti = false;
+
+            _peron1Yanlis = false;
+            _peron2Yanlis = false;
         }
         else
         {
@@ -65,6 +72,10 @@ public class LevelCanvasScript : MonoBehaviour
             _peron1Bitti = false;
             _peron2Bitti = false;
             _peron3Bitti = false;
+
+            _peron1Yanlis = false;
+            _peron2Yanlis = false;
+            _peron3Yanlis = false;
         }
 
 
@@ -73,10 +84,7 @@ public class LevelCanvasScript : MonoBehaviour
     }
 
 
-    void Update()
-    {
 
-    }
 
 
     //--------------PERON 1 KELIME KONTROL ETME------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,6 +157,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron1Yanlis = true;
                         Debug.Log("ILK PERON YANLIS");
                     }
                 }
@@ -164,7 +173,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron1gelenkelime.Count == 3 && _peron1kelimeliste.Count == 3)
                 {
-
+                    _peron1Yanlis = true;
                     Debug.Log("ILK PERON YANLIS");
 
                 }
@@ -177,9 +186,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron1gelenkelime.Count == 2)
+            if (_peron1gelenkelime.Count == 2 && _peron1kelimeliste.Count >= 3)
             {
                 transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+                _peron1Yanlis = false;
             }
             else
             {
@@ -204,6 +214,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron1Yanlis = true;
                         Debug.Log("ILK PERON YANLIS");
                     }
                 }
@@ -218,7 +229,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron1gelenkelime.Count == 4 && _peron1kelimeliste.Count == 4)
                 {
-
+                    _peron1Yanlis = true;
                     Debug.Log("ILK PERON YANLIS");
 
                 }
@@ -230,9 +241,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron1gelenkelime.Count == 3)
+            if (_peron1gelenkelime.Count == 3 && _peron1kelimeliste.Count >= 4)
             {
                 transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+                _peron1Yanlis = false;
             }
             else
             {
@@ -257,6 +269,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron1Yanlis = true;
                         Debug.Log("ILK PERON YANLIS");
                     }
                 }
@@ -271,7 +284,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron1gelenkelime.Count == 5 && _peron1kelimeliste.Count == 5)
                 {
-
+                    _peron1Yanlis = true;
                     Debug.Log("ILK PERON YANLIS");
 
                 }
@@ -283,9 +296,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron1gelenkelime.Count == 4)
+            if (_peron1gelenkelime.Count == 4 && _peron1kelimeliste.Count >= 5)
             {
                 transform.GetChild(0).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+                _peron1Yanlis = false;
             }
             else
             {
@@ -310,6 +324,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron1Yanlis = true;
                         Debug.Log("ILK PERON YANLIS");
                     }
                 }
@@ -324,7 +339,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron1gelenkelime.Count == 6 && _peron1kelimeliste.Count == 6)
                 {
-
+                    _peron1Yanlis = true;
                     Debug.Log("ILK PERON YANLIS");
 
                 }
@@ -336,9 +351,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron1gelenkelime.Count == 5)
+            if (_peron1gelenkelime.Count == 5 && _peron1kelimeliste.Count >= 6)
             {
                 transform.GetChild(0).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+                _peron1Yanlis = false;
             }
             else
             {
@@ -347,6 +363,102 @@ public class LevelCanvasScript : MonoBehaviour
 
         }
 
+        if (_level1)
+        {
+            if (_peron1Bitti && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (_peron1Bitti && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(3);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
 
 
     }
@@ -423,6 +535,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron2Yanlis = true;
                         Debug.Log("IKINCI PERON YANLIS");
                     }
                 }
@@ -437,7 +550,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron2gelenkelime.Count == 3 && _peron2kelimeliste.Count == 3)
                 {
-
+                    _peron2Yanlis = true;
                     Debug.Log("IKINCI PERON YANLIS");
 
                 }
@@ -449,9 +562,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron2gelenkelime.Count == 2)
+            if (_peron2gelenkelime.Count == 2 && _peron2kelimeliste.Count >= 3)
             {
                 transform.GetChild(1).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+                _peron2Yanlis = false;
             }
             else
             {
@@ -476,6 +590,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron2Yanlis = true;
                         Debug.Log("IKINCI PERON YANLIS");
                     }
                 }
@@ -490,7 +605,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron2gelenkelime.Count == 4 && _peron2kelimeliste.Count == 4)
                 {
-
+                    _peron2Yanlis = true;
                     Debug.Log("IKINCI PERON YANLIS");
 
                 }
@@ -502,9 +617,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron2gelenkelime.Count == 3)
+            if (_peron2gelenkelime.Count == 3 && _peron2kelimeliste.Count >= 4)
             {
                 transform.GetChild(1).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+                _peron2Yanlis = false;
             }
             else
             {
@@ -529,6 +645,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron2Yanlis = true;
                         Debug.Log("IKINCI PERON YANLIS");
                     }
                 }
@@ -543,7 +660,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron2gelenkelime.Count == 5 && _peron2kelimeliste.Count == 5)
                 {
-
+                    _peron2Yanlis = true;
                     Debug.Log("IKINCI PERON YANLIS");
 
                 }
@@ -555,9 +672,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron2gelenkelime.Count == 4)
+            if (_peron2gelenkelime.Count == 4 && _peron2kelimeliste.Count >= 5)
             {
                 transform.GetChild(1).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+                _peron2Yanlis = false;
             }
             else
             {
@@ -582,6 +700,7 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
+                        _peron2Yanlis = true;
                         Debug.Log("IKINCI PERON YANLIS");
                     }
                 }
@@ -596,7 +715,7 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron2gelenkelime.Count == 6 && _peron2kelimeliste.Count == 6)
                 {
-
+                    _peron2Yanlis = true;
                     Debug.Log("IKINCI PERON YANLIS");
 
                 }
@@ -608,9 +727,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron2gelenkelime.Count == 5)
+            if (_peron2gelenkelime.Count == 5 && _peron2kelimeliste.Count >= 6)
             {
                 transform.GetChild(1).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+                _peron2Yanlis = false;
             }
             else
             {
@@ -619,6 +739,102 @@ public class LevelCanvasScript : MonoBehaviour
 
         }
 
+        if (_level1)
+        {
+            if (_peron1Bitti && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (_peron1Bitti && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(3);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
 
     }
 
@@ -694,7 +910,8 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("UCUNCU PERON YANLIS");
+                        _peron3Yanlis = true;
+                        Debug.Log("UCUNCU PERON YANLIS 1");
                     }
                 }
                 else
@@ -708,8 +925,8 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron3gelenkelime.Count == 3 && _peron3kelimeliste.Count == 3)
                 {
-
-                    Debug.Log("UCUNCU PERON YANLIS");
+                    _peron3Yanlis = true;
+                    Debug.Log("UCUNCU PERON YANLIS 2");
 
                 }
                 else
@@ -720,9 +937,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron3gelenkelime.Count == 2)
+            if (_peron3gelenkelime.Count == 2 && _peron3kelimeliste.Count >= 3)
             {
                 transform.GetChild(2).gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().color = Color.white;
+                _peron3Yanlis = false;
             }
             else
             {
@@ -747,7 +965,8 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("UCUNCU PERON YANLIS");
+                        _peron3Yanlis = true;
+                        Debug.Log("UCUNCU PERON YANLIS 3");
                     }
                 }
                 else
@@ -761,8 +980,8 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron3gelenkelime.Count == 4 && _peron3kelimeliste.Count == 4)
                 {
-
-                    Debug.Log("UCUNCU PERON YANLIS");
+                    _peron3Yanlis = true;
+                    Debug.Log("UCUNCU PERON YANLIS 4");
 
                 }
                 else
@@ -773,9 +992,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron3gelenkelime.Count == 3)
+            if (_peron3gelenkelime.Count == 3 && _peron3kelimeliste.Count >= 4)
             {
                 transform.GetChild(2).gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().color = Color.white;
+                _peron3Yanlis = false;
             }
             else
             {
@@ -800,7 +1020,8 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("UCUNCU PERON YANLIS");
+                        _peron3Yanlis = true;
+                        Debug.Log("UCUNCU PERON YANLIS 5");
                     }
                 }
                 else
@@ -814,8 +1035,8 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron3gelenkelime.Count == 5 && _peron3kelimeliste.Count == 5)
                 {
-
-                    Debug.Log("UCUNCU PERON YANLIS");
+                    _peron3Yanlis = true;
+                    Debug.Log("UCUNCU PERON YANLIS 6");
 
                 }
                 else
@@ -826,9 +1047,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron3gelenkelime.Count == 4)
+            if (_peron3gelenkelime.Count == 4 && _peron3kelimeliste.Count >= 5)
             {
                 transform.GetChild(2).gameObject.transform.GetChild(4).gameObject.GetComponent<Text>().color = Color.white;
+                _peron3Yanlis = false;
             }
             else
             {
@@ -853,7 +1075,8 @@ public class LevelCanvasScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("UCUNCU PERON YANLIS");
+                        _peron3Yanlis = true;
+                        Debug.Log("UCUNCU PERON YANLIS 7");
                     }
                 }
                 else
@@ -867,8 +1090,8 @@ public class LevelCanvasScript : MonoBehaviour
 
                 if (_peron3gelenkelime.Count == 6 && _peron3kelimeliste.Count == 6)
                 {
-
-                    Debug.Log("UCUNCU PERON YANLIS");
+                    _peron3Yanlis = true;
+                    Debug.Log("UCUNCU PERON YANLIS 8");
 
                 }
                 else
@@ -879,9 +1102,10 @@ public class LevelCanvasScript : MonoBehaviour
         }
         else
         {
-            if (_peron3gelenkelime.Count == 5)
+            if (_peron3gelenkelime.Count == 5 && _peron3kelimeliste.Count >= 6)
             {
                 transform.GetChild(2).gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().color = Color.white;
+                _peron3Yanlis = false;
             }
             else
             {
@@ -889,6 +1113,104 @@ public class LevelCanvasScript : MonoBehaviour
             }
 
         }
+
+        if (_level1)
+        {
+            if (_peron1Bitti && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(1);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (_peron1Bitti && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(3);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Bitti && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Bitti && _peron2Yanlis && _peron3Bitti)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(100);
+                GameController.instance.ScoreCarp(2);
+                UIController.instance.ActivateWinScreen();
+            }
+            else if (_peron1Yanlis && _peron2Yanlis && _peron3Yanlis)
+            {
+                GameController.instance.isContinue = false;
+                GameController.instance.SetScore(0);
+                UIController.instance.ActivateLooseScreen();
+            }
+            else
+            {
+
+            }
+        }
+
     }
 
 

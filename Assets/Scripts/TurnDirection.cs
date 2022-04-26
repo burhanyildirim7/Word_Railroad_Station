@@ -16,6 +16,7 @@ public class TurnDirection : MonoBehaviour
     GameObject otherGameobject;
 
 
+
     public bool newRound = false;
     void Start()
     {
@@ -28,11 +29,28 @@ public class TurnDirection : MonoBehaviour
 
     void Update()
     {
-        if (newRound)
+        if (GameController.instance.isContinue)
         {
-            transform.DORotate(new Vector3(0, 90, 0), 1);
-            newRound = false;
+            if (newRound)
+            {
+                if (ArrowControl.GetComponent<SwipeTest>()._level1)
+                {
+                    transform.DORotate(new Vector3(0, 90, 0), 1);
+                    newRound = false;
+                }
+                else
+                {
+                    transform.DORotate(new Vector3(0, 0, 0), 1);
+                    newRound = false;
+                }
+
+            }
         }
+        else
+        {
+
+        }
+
 
     }
 
@@ -48,46 +66,69 @@ public class TurnDirection : MonoBehaviour
     IEnumerator TurnDirectionWithMouse()
     {
         yield return new WaitForSeconds(1);
-        if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeft)
+
+        if (ArrowControl.GetComponent<SwipeTest>()._level1)
         {
-            transform.DORotate(new Vector3(0, 50, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
-            right = false;
-            left = true;
-            mid = false;
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeft)
+            {
+                transform.DORotate(new Vector3(0, 50, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = false;
+                left = true;
+                mid = false;
+            }
+
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsRight)
+            {
+                transform.DORotate(new Vector3(0, 130, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = true;
+                left = false;
+                mid = false;
+            }
+        }
+        else
+        {
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeft)
+            {
+                transform.DORotate(new Vector3(0, -65, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = false;
+                left = true;
+                mid = false;
+            }
+
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsMid)
+            {
+                transform.DORotate(new Vector3(0, 0, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = false;
+                left = false;
+                mid = true;
+            }
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsRight)
+            {
+                transform.DORotate(new Vector3(0, 65, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = true;
+                left = false;
+                mid = false;
+            }
+
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeftBarrier)
+            {
+                transform.DORotate(new Vector3(0, -90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = false;
+                left = false;
+                mid = false;
+                leftBarrier = true;
+            }
+
+            if (ArrowControl.GetComponent<SwipeTest>().arrowIsRightBarrier)
+            {
+                transform.DORotate(new Vector3(0, 90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
+                right = false;
+                left = false;
+                mid = false;
+                rightBarrier = true;
+            }
         }
 
-        if (ArrowControl.GetComponent<SwipeTest>().arrowIsMid)
-        {
-            transform.DORotate(new Vector3(0, 0, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
-            right = false;
-            left = false;
-            mid = true;
-        }
-        if (ArrowControl.GetComponent<SwipeTest>().arrowIsRight)
-        {
-            transform.DORotate(new Vector3(0, 130, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
-            right = true;
-            left = false;
-            mid = false;
-        }
-
-        if (ArrowControl.GetComponent<SwipeTest>().arrowIsLeftBarrier)
-        {
-            transform.DORotate(new Vector3(0, -90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
-            right = false;
-            left = false;
-            mid = false;
-            leftBarrier = true;
-        }
-
-        if (ArrowControl.GetComponent<SwipeTest>().arrowIsRightBarrier)
-        {
-            transform.DORotate(new Vector3(0, 90, 0), 1).OnComplete(() => otherGameobject.gameObject.GetComponent<TrainControl>().canTurn = true);
-            right = false;
-            left = false;
-            mid = false;
-            rightBarrier = true;
-        }
 
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class MainControl : MonoBehaviour
 {
+
+    public static MainControl instance;
+
     public int leftStationChild = 0;
     public int midStationChild = 0;
     public int rightStationChild = 0;
@@ -19,7 +22,7 @@ public class MainControl : MonoBehaviour
     public GameObject vagon;
     bool ready = true;
 
-    public List<GameObject> _yollanacakHarfler = new List<GameObject>();
+    //public List<GameObject> _yollanacakHarfler = new List<GameObject>();
     public List<int> _indexListesi = new List<int>();
 
     private LevelCanvasScript _levelCanvasScript;
@@ -30,25 +33,39 @@ public class MainControl : MonoBehaviour
 
     public GameObject _bombaObject;
 
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        //else Destroy(this);
+    }
+
     void Start()
     {
-        Invoke("GönderilecekHarfListesiOlustur", 0.5f);
+        Invoke("GonderilecekHarfListesiOlustur", 0.5f);
         //GönderilecekHarfListesiOlustur();
 
     }
 
     void Update()
     {
-        if (ready)
+        if (GameController.instance.isContinue)
+        {
+            if (ready)
+            {
+
+                StartCoroutine(SpawnNewTrain());
+            }
+        }
+        else
         {
 
-            StartCoroutine(SpawnNewTrain());
         }
+
 
 
     }
 
-    public void GönderilecekHarfListesiOlustur()
+    public void GonderilecekHarfListesiOlustur()
     {
         _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
 
@@ -122,7 +139,7 @@ public class MainControl : MonoBehaviour
             //spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
             spawnedLetter.transform.parent = spawnedTrain.transform;
             spawnedTrain.GetComponent<CubeScript>()._bombaMi = true;
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(8);
         }
         else
         {
@@ -136,7 +153,7 @@ public class MainControl : MonoBehaviour
             spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
             spawnedLetter.transform.parent = spawnedTrain.transform;
             spawnedTrain.GetComponent<CubeScript>()._bombaMi = false;
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(8);
         }
 
 

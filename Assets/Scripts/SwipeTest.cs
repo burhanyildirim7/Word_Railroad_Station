@@ -38,472 +38,480 @@ public class SwipeTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        CheckArrowDirection();
-
-
-        // FunctionAccordingToArrowDirection();
-
-        if (Input.GetMouseButtonDown(0))
+        if (GameController.instance.isContinue)
         {
-            canSwipe = true;
-        }
 
-        if (_level1)
-        {
-            if (swipeControls.SwipeLeft && canSwipe)
+            CheckArrowDirection();
+
+
+            // FunctionAccordingToArrowDirection();
+
+            if (Input.GetMouseButtonDown(0))
             {
-
-                if (rightArrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron1Bitti)
-                    {
-
-                    }
-                    else
-                    {
-                        rightArrow.SetActive(false);
-                        leftArrow.SetActive(true);
-                    }
-
-
-                }
-
-                canSwipe = false;
+                canSwipe = true;
             }
 
-
-
-            if (swipeControls.SwipeRight && canSwipe)
+            if (_level1)
             {
-                if (leftArrow.activeSelf)
+                if (swipeControls.SwipeLeft && canSwipe)
                 {
-                    if (_levelCanvasScript._peron2Bitti)
+
+                    if (rightArrow.activeSelf)
                     {
-
-                    }
-                    else
-                    {
-                        leftArrow.SetActive(false);
-                        rightArrow.SetActive(true);
-                    }
-
-
-                }
-
-                canSwipe = false;
-            }
-        }
-        /*
-        else if (_level2)
-        {
-            if (swipeControls.SwipeLeft && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    rightArrow.SetActive(true);
-                }
-
-
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    leftArrow.SetActive(true);
-
-                }
-
-
-                canSwipe = false;
-            }
-
-
-
-            if (swipeControls.SwipeRight && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    rightArrow.SetActive(true);
-
-                }
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    leftArrow.SetActive(true);
-                }
-                canSwipe = false;
-            }
-        }
-        */
-        else
-        {
-            if (swipeControls.SwipeLeft && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron2Bitti)
-                    {
-                        if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
+                        if (_levelCanvasScript._peron1Bitti)
                         {
-                            barrier2Arrow.SetActive(false);
-                            leftArrow.SetActive(true);
+
                         }
                         else
                         {
-                            barrier2Arrow.SetActive(false);
-                            midArrow.SetActive(true);
+                            rightArrow.SetActive(false);
+                            leftArrow.SetActive(true);
                         }
 
+
                     }
-                    else
+
+                    canSwipe = false;
+                }
+
+
+
+                if (swipeControls.SwipeRight && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron2Bitti)
+                        {
+
+                        }
+                        else
+                        {
+                            leftArrow.SetActive(false);
+                            rightArrow.SetActive(true);
+                        }
+
+
+                    }
+
+                    canSwipe = false;
+                }
+            }
+            /*
+            else if (_level2)
+            {
+                if (swipeControls.SwipeLeft && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else if (barrier2Arrow.activeSelf)
                     {
                         barrier2Arrow.SetActive(false);
                         rightArrow.SetActive(true);
                     }
 
-                }
 
-
-                else if (rightArrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron3Bitti)
-                    {
-                        if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
-                        {
-                            rightArrow.SetActive(false);
-                            barrier1Arrow.SetActive(true);
-                        }
-                        else
-                        {
-                            rightArrow.SetActive(false);
-                            leftArrow.SetActive(true);
-                        }
-
-                    }
-                    else
+                    else if (rightArrow.activeSelf)
                     {
                         rightArrow.SetActive(false);
                         midArrow.SetActive(true);
+
                     }
 
 
-                }
-
-
-                else if (midArrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron1Bitti)
-                    {
-                        midArrow.SetActive(false);
-                        barrier1Arrow.SetActive(true);
-                    }
-                    else
+                    else if (midArrow.activeSelf)
                     {
                         midArrow.SetActive(false);
                         leftArrow.SetActive(true);
+
                     }
 
 
+                    canSwipe = false;
                 }
 
 
-                canSwipe = false;
-            }
 
-
-
-            if (swipeControls.SwipeRight && canSwipe)
-            {
-                if (leftArrow.activeSelf)
+                if (swipeControls.SwipeRight && canSwipe)
                 {
-                    if (_levelCanvasScript._peron3Bitti)
-                    {
-                        if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
-                        {
-                            leftArrow.SetActive(false);
-                            barrier2Arrow.SetActive(true);
-                        }
-                        else
-                        {
-                            leftArrow.SetActive(false);
-                            rightArrow.SetActive(true);
-                        }
-
-                    }
-                    else
+                    if (leftArrow.activeSelf)
                     {
                         leftArrow.SetActive(false);
                         midArrow.SetActive(true);
+
                     }
 
-
-                }
-
-                else if (midArrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron2Bitti)
-                    {
-                        midArrow.SetActive(false);
-                        barrier2Arrow.SetActive(true);
-                    }
-                    else
+                    else if (midArrow.activeSelf)
                     {
                         midArrow.SetActive(false);
                         rightArrow.SetActive(true);
+
                     }
-
-
-                }
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    if (_levelCanvasScript._peron1Bitti)
+                    else if (rightArrow.activeSelf)
                     {
-                        if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
-                        {
-                            barrier1Arrow.SetActive(false);
-                            rightArrow.SetActive(true);
-                        }
-                        else
-                        {
-                            barrier1Arrow.SetActive(false);
-                            midArrow.SetActive(true);
-                        }
+                        rightArrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
 
                     }
-                    else
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
                     {
                         barrier1Arrow.SetActive(false);
                         leftArrow.SetActive(true);
                     }
-
+                    canSwipe = false;
                 }
-                canSwipe = false;
             }
+            */
+            else
+            {
+                if (swipeControls.SwipeLeft && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron2Bitti)
+                        {
+                            if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
+                            {
+                                barrier2Arrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                            }
+                            else
+                            {
+                                barrier2Arrow.SetActive(false);
+                                midArrow.SetActive(true);
+                            }
+
+                        }
+                        else
+                        {
+                            barrier2Arrow.SetActive(false);
+                            rightArrow.SetActive(true);
+                        }
+
+                    }
+
+
+                    else if (rightArrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron3Bitti)
+                        {
+                            if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
+                            {
+                                rightArrow.SetActive(false);
+                                barrier1Arrow.SetActive(true);
+                            }
+                            else
+                            {
+                                rightArrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                            }
+
+                        }
+                        else
+                        {
+                            rightArrow.SetActive(false);
+                            midArrow.SetActive(true);
+                        }
+
+
+                    }
+
+
+                    else if (midArrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron1Bitti)
+                        {
+                            midArrow.SetActive(false);
+                            barrier1Arrow.SetActive(true);
+                        }
+                        else
+                        {
+                            midArrow.SetActive(false);
+                            leftArrow.SetActive(true);
+                        }
+
+
+                    }
+
+
+                    canSwipe = false;
+                }
+
+
+
+                if (swipeControls.SwipeRight && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron3Bitti)
+                        {
+                            if (_levelCanvasScript._peron2Bitti && _levelCanvasScript._peron3Bitti)
+                            {
+                                leftArrow.SetActive(false);
+                                barrier2Arrow.SetActive(true);
+                            }
+                            else
+                            {
+                                leftArrow.SetActive(false);
+                                rightArrow.SetActive(true);
+                            }
+
+                        }
+                        else
+                        {
+                            leftArrow.SetActive(false);
+                            midArrow.SetActive(true);
+                        }
+
+
+                    }
+
+                    else if (midArrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron2Bitti)
+                        {
+                            midArrow.SetActive(false);
+                            barrier2Arrow.SetActive(true);
+                        }
+                        else
+                        {
+                            midArrow.SetActive(false);
+                            rightArrow.SetActive(true);
+                        }
+
+
+                    }
+                    else if (rightArrow.activeSelf)
+                    {
+                        rightArrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        if (_levelCanvasScript._peron1Bitti)
+                        {
+                            if (_levelCanvasScript._peron1Bitti && _levelCanvasScript._peron3Bitti)
+                            {
+                                barrier1Arrow.SetActive(false);
+                                rightArrow.SetActive(true);
+                            }
+                            else
+                            {
+                                barrier1Arrow.SetActive(false);
+                                midArrow.SetActive(true);
+                            }
+
+                        }
+                        else
+                        {
+                            barrier1Arrow.SetActive(false);
+                            leftArrow.SetActive(true);
+                        }
+
+                    }
+                    canSwipe = false;
+                }
+            }
+            /*
+            else if (_level4)
+            {
+                if (swipeControls.SwipeLeft && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        rightArrow.SetActive(true);
+                    }
+
+
+                    else if (rightArrow.activeSelf)
+                    {
+                        rightArrow.SetActive(false);
+                        midArrow.SetActive(true);
+
+                    }
+
+
+                    else if (midArrow.activeSelf)
+                    {
+                        midArrow.SetActive(false);
+                        leftArrow.SetActive(true);
+
+                    }
+
+
+                    canSwipe = false;
+                }
+
+
+
+                if (swipeControls.SwipeRight && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        midArrow.SetActive(true);
+
+                    }
+
+                    else if (midArrow.activeSelf)
+                    {
+                        midArrow.SetActive(false);
+                        rightArrow.SetActive(true);
+
+                    }
+                    else if (rightArrow.activeSelf)
+                    {
+                        rightArrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        leftArrow.SetActive(true);
+                    }
+                    canSwipe = false;
+                }
+            }
+            else if (_level5)
+            {
+                if (swipeControls.SwipeLeft && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        rightArrow.SetActive(true);
+                    }
+
+
+                    else if (rightArrow.activeSelf)
+                    {
+                        rightArrow.SetActive(false);
+                        midArrow.SetActive(true);
+
+                    }
+
+
+                    else if (midArrow.activeSelf)
+                    {
+                        midArrow.SetActive(false);
+                        leftArrow.SetActive(true);
+
+                    }
+
+
+                    canSwipe = false;
+                }
+
+
+
+                if (swipeControls.SwipeRight && canSwipe)
+                {
+                    if (leftArrow.activeSelf)
+                    {
+                        leftArrow.SetActive(false);
+                        midArrow.SetActive(true);
+
+                    }
+
+                    else if (midArrow.activeSelf)
+                    {
+                        midArrow.SetActive(false);
+                        rightArrow.SetActive(true);
+
+                    }
+                    else if (rightArrow.activeSelf)
+                    {
+                        rightArrow.SetActive(false);
+                        barrier2Arrow.SetActive(true);
+
+                    }
+                    else if (barrier2Arrow.activeSelf)
+                    {
+                        barrier2Arrow.SetActive(false);
+                        barrier1Arrow.SetActive(true);
+                    }
+
+                    else if (barrier1Arrow.activeSelf)
+                    {
+                        barrier1Arrow.SetActive(false);
+                        leftArrow.SetActive(true);
+                    }
+                    canSwipe = false;
+                }
+            }
+            */
+
         }
-        /*
-        else if (_level4)
+        else
         {
-            if (swipeControls.SwipeLeft && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
 
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    rightArrow.SetActive(true);
-                }
-
-
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    leftArrow.SetActive(true);
-
-                }
-
-
-                canSwipe = false;
-            }
-
-
-
-            if (swipeControls.SwipeRight && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    rightArrow.SetActive(true);
-
-                }
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    leftArrow.SetActive(true);
-                }
-                canSwipe = false;
-            }
         }
-        else if (_level5)
-        {
-            if (swipeControls.SwipeLeft && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    rightArrow.SetActive(true);
-                }
-
-
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    leftArrow.SetActive(true);
-
-                }
-
-
-                canSwipe = false;
-            }
-
-
-
-            if (swipeControls.SwipeRight && canSwipe)
-            {
-                if (leftArrow.activeSelf)
-                {
-                    leftArrow.SetActive(false);
-                    midArrow.SetActive(true);
-
-                }
-
-                else if (midArrow.activeSelf)
-                {
-                    midArrow.SetActive(false);
-                    rightArrow.SetActive(true);
-
-                }
-                else if (rightArrow.activeSelf)
-                {
-                    rightArrow.SetActive(false);
-                    barrier2Arrow.SetActive(true);
-
-                }
-                else if (barrier2Arrow.activeSelf)
-                {
-                    barrier2Arrow.SetActive(false);
-                    barrier1Arrow.SetActive(true);
-                }
-
-                else if (barrier1Arrow.activeSelf)
-                {
-                    barrier1Arrow.SetActive(false);
-                    leftArrow.SetActive(true);
-                }
-                canSwipe = false;
-            }
-        }
-        */
 
     }
 

@@ -36,6 +36,8 @@ TagManager:
   - Y
   - Z
   - LevelCanvas
+  - SolBariyer
+  - SagBariyer
   layers:
   - Default
   - TransparentFX

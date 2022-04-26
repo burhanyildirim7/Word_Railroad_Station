@@ -73,6 +73,7 @@ public class UIController : MonoBehaviour
         GamePanel.SetActive(false);
         LevelController.instance.NextLevelEvents();
         StartCoroutine(StartScreenCoinEffect());
+        MainControl.instance.GonderilecekHarfListesiOlustur();
     }
 
 

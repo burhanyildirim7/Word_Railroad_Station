@@ -24,6 +24,8 @@ public class CubeScript : MonoBehaviour
 
     public ParticleSystem _bombaPatlamaEfekt;
 
+    private bool _ucacak;
+
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class CubeScript : MonoBehaviour
         {
             _tasidigiHarf = gameObject.transform.GetChild(6).gameObject.transform.GetChild(0).gameObject.name;
         }
+
+        _ucacak = false;
 
 
         Invoke("HareketiBaslat", 1f);
@@ -49,9 +53,35 @@ public class CubeScript : MonoBehaviour
         bariyerSol = GameObject.FindGameObjectWithTag("LeftStation");
         bariyerOrta = GameObject.FindGameObjectWithTag("MidStation");
         bariyerSag = GameObject.FindGameObjectWithTag("RightStation");
+        bariyerEmpty1 = GameObject.FindGameObjectWithTag("SolBariyer");
+        bariyerEmpty2 = GameObject.FindGameObjectWithTag("SagBariyer");
         donenRay = GameObject.FindGameObjectWithTag("turnDirection");
 
         _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_ucacak)
+        {
+            GetComponent<Rigidbody>().AddForce(transform.forward * 10 * Time.timeScale);
+
+            Invoke("ForceKapat", 1f);
+        }
+        else
+        {
+
+        }
+
+    }
+
+    private void ForceKapat()
+    {
+        _ucacak = false;
+
+        GetComponent<Rigidbody>().useGravity = true;
+
+        gameObject.GetComponent<CubeScript>().enabled = false;
     }
 
     private void HareketiBaslat()
@@ -533,6 +563,96 @@ public class CubeScript : MonoBehaviour
         {
             transform.parent = donenRay.transform;
             //TurnDirection = other.gameObject;
+        }
+        else if (other.gameObject.tag == "SolBariyer")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+
+            TurnDirection.GetComponent<TurnDirection>().newRound = true;
+
+            if (_levelCanvasScript._peron3Bitti)
+            {
+                if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                }
+
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
+
+            //GetComponent<Rigidbody>().useGravity = true;
+
+            //gameObject.GetComponent<CubeScript>().enabled = false;
+
+            _ucacak = true;
+
+
+
+            Debug.Log("Force Uygulandı");
+        }
+        else if (other.gameObject.tag == "SagBariyer")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+
+            TurnDirection.GetComponent<TurnDirection>().newRound = true;
+
+            if (_levelCanvasScript._peron3Bitti)
+            {
+                if (_levelCanvasScript._peron3Bitti && _levelCanvasScript._peron1Bitti)
+                {
+                    ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(true);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                }
+                else
+                {
+                    ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(false);
+                }
+
+            }
+            else
+            {
+                ArrowControl.GetComponent<SwipeTest>().barrier1Arrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().barrier2Arrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(false);
+                ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
+            }
+
+            //GetComponent<Rigidbody>().useGravity = true;
+
+            //gameObject.GetComponent<CubeScript>().enabled = false;
+
+            _ucacak = true;
+        }
+        else
+        {
+
         }
 
 
