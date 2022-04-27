@@ -33,6 +33,8 @@ public class TurnDirection : MonoBehaviour
         {
             if (newRound)
             {
+                ArrowControl = GameObject.FindGameObjectWithTag("ArrowControl");
+
                 if (ArrowControl.GetComponent<SwipeTest>()._level1)
                 {
                     transform.DORotate(new Vector3(0, 90, 0), 1);

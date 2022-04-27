@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour
     public Text gamePlayScoreText, winScreenScoreText, levelNoText, tapToStartScoreText, totalElmasText;
     public Animator ScoreTextAnim;
 
+    public GameObject _onboardingObject;
+
+    private bool _onboardingKontrol;
 
 
     // singleton yapisi burada kuruluyor.
@@ -23,6 +26,11 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         StartUI();
+        _onboardingKontrol = true;
+
+        _onboardingObject.SetActive(false);
+
+
     }
 
     // Oyun ilk acildiginda calisacak olan ui fonksiyonu. 
@@ -51,6 +59,21 @@ public class UIController : MonoBehaviour
         SetLevelText(LevelController.instance.totalLevelNo);
         SetGamePlayScoreText();
 
+        if (_onboardingKontrol == true)
+        {
+            _onboardingObject.SetActive(true);
+            Invoke("OnBoarding", 2f);
+        }
+        else
+        {
+
+        }
+
+    }
+
+    private void OnBoarding()
+    {
+        _onboardingObject.SetActive(false);
     }
 
     // RESTART TUSUNA BASILDISINDA  --- LOOSE EKRANINDA

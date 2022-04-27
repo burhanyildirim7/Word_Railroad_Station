@@ -48,6 +48,7 @@ public class SwipeTest : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
                 canSwipe = true;
             }
 
@@ -181,6 +182,8 @@ public class SwipeTest : MonoBehaviour
             {
                 if (swipeControls.SwipeLeft && canSwipe)
                 {
+                    MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                     if (leftArrow.activeSelf)
                     {
                         leftArrow.SetActive(false);
@@ -190,8 +193,8 @@ public class SwipeTest : MonoBehaviour
 
                     else if (barrier1Arrow.activeSelf)
                     {
-                        barrier1Arrow.SetActive(false);
-                        barrier2Arrow.SetActive(true);
+                        //barrier1Arrow.SetActive(false);
+                        //barrier2Arrow.SetActive(true);
                     }
                     else if (barrier2Arrow.activeSelf)
                     {
@@ -268,6 +271,8 @@ public class SwipeTest : MonoBehaviour
 
                 if (swipeControls.SwipeRight && canSwipe)
                 {
+                    MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                     if (leftArrow.activeSelf)
                     {
                         if (_levelCanvasScript._peron3Bitti)
@@ -316,8 +321,8 @@ public class SwipeTest : MonoBehaviour
                     }
                     else if (barrier2Arrow.activeSelf)
                     {
-                        barrier2Arrow.SetActive(false);
-                        barrier1Arrow.SetActive(true);
+                        //barrier2Arrow.SetActive(false);
+                        //barrier1Arrow.SetActive(true);
                     }
 
                     else if (barrier1Arrow.activeSelf)

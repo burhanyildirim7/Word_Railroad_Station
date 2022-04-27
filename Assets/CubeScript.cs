@@ -73,6 +73,15 @@ public class CubeScript : MonoBehaviour
 
         }
 
+        if (GameController.instance.isContinue == false)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+
+        }
+
     }
 
     private void ForceKapat()
@@ -127,12 +136,16 @@ public class CubeScript : MonoBehaviour
     {
         if (other.gameObject.tag == "LeftStation")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "LeftStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
 
             if (_bombaMi)
             {
+                MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                 _bombaPatlamaEfekt.Play();
                 Destroy(gameObject, 0.3f);
             }
@@ -140,6 +153,7 @@ public class CubeScript : MonoBehaviour
             {
                 LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
                 LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
 
@@ -192,12 +206,16 @@ public class CubeScript : MonoBehaviour
 
         else if (other.gameObject.tag == "RightStation")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "RightStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
 
             if (_bombaMi)
             {
+                MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                 _bombaPatlamaEfekt.Play();
                 Destroy(gameObject, 0.3f);
             }
@@ -205,6 +223,7 @@ public class CubeScript : MonoBehaviour
             {
                 LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
                 LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
 
@@ -253,12 +272,16 @@ public class CubeScript : MonoBehaviour
 
         else if (other.gameObject.tag == "MidStation")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
             gameObject.tag = "MidStop";
             gameObject.GetComponent<CubeScript>().enabled = false;
 
             if (_bombaMi)
             {
+                MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                 _bombaPatlamaEfekt.Play();
                 Destroy(gameObject, 0.3f);
             }
@@ -266,6 +289,7 @@ public class CubeScript : MonoBehaviour
             {
                 LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
                 LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
             //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
@@ -313,6 +337,8 @@ public class CubeScript : MonoBehaviour
 
         else if (other.gameObject.tag == "LeftStop")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
 
             gameObject.GetComponent<CubeScript>().enabled = false;
@@ -321,11 +347,18 @@ public class CubeScript : MonoBehaviour
             {
                 if (_bombaMi)
                 {
+                    MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                     LevelCanvasScript.instance._peron1gelenkelime.RemoveAt(LevelCanvasScript.instance._peron1gelenkelime.Count - 1);
                     LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                    //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
+                    //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
                     Destroy(other.gameObject, 0.3f);
+                    //MainControl.instance.BosYeriTemizle();
                     Destroy(gameObject, 0.3f);
+                    Invoke("YerTEmizleme", 0.5f);
+
                 }
                 else
                 {
@@ -339,6 +372,8 @@ public class CubeScript : MonoBehaviour
                     {
                         LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
                         LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                        MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
                     }
 
                 }
@@ -397,6 +432,8 @@ public class CubeScript : MonoBehaviour
         }
         else if (other.gameObject.tag == "MidStop")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
 
             gameObject.GetComponent<CubeScript>().enabled = false;
@@ -405,11 +442,18 @@ public class CubeScript : MonoBehaviour
             {
                 if (_bombaMi)
                 {
+                    MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                     LevelCanvasScript.instance._peron3gelenkelime.RemoveAt(LevelCanvasScript.instance._peron3gelenkelime.Count - 1);
                     LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                    //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
+                    //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
                     Destroy(other.gameObject, 0.3f);
+                    //MainControl.instance.BosYeriTemizle();
                     Destroy(gameObject, 0.3f);
+                    Invoke("YerTEmizleme", 0.5f);
+
                 }
                 else
                 {
@@ -423,6 +467,7 @@ public class CubeScript : MonoBehaviour
                     {
                         LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
                         LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                        MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
                     }
                 }
             }
@@ -479,6 +524,8 @@ public class CubeScript : MonoBehaviour
 
         else if (other.gameObject.tag == "RightStop")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
 
             gameObject.GetComponent<CubeScript>().enabled = false;
@@ -487,11 +534,18 @@ public class CubeScript : MonoBehaviour
             {
                 if (_bombaMi)
                 {
+                    MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
                     LevelCanvasScript.instance._peron2gelenkelime.RemoveAt(LevelCanvasScript.instance._peron2gelenkelime.Count - 1);
                     LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                    //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
+                    //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
                     Destroy(other.gameObject, 0.3f);
+                    //MainControl.instance.BosYeriTemizle();
                     Destroy(gameObject, 0.3f);
+                    Invoke("YerTEmizleme", 0.5f);
+
                 }
                 else
                 {
@@ -505,6 +559,7 @@ public class CubeScript : MonoBehaviour
                     {
                         LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
                         LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                        MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
                     }
                 }
             }
@@ -561,11 +616,15 @@ public class CubeScript : MonoBehaviour
         }
         else if (other.gameObject.tag == "turnDirection")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             transform.parent = donenRay.transform;
             //TurnDirection = other.gameObject;
         }
         else if (other.gameObject.tag == "SolBariyer")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
 
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
@@ -604,6 +663,8 @@ public class CubeScript : MonoBehaviour
             //gameObject.GetComponent<CubeScript>().enabled = false;
 
             _ucacak = true;
+
+            Destroy(gameObject, 3f);
 
 
 
@@ -611,6 +672,8 @@ public class CubeScript : MonoBehaviour
         }
         else if (other.gameObject.tag == "SagBariyer")
         {
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             GetComponent<NavMeshAgent>().enabled = false;
 
             TurnDirection.GetComponent<TurnDirection>().newRound = true;
@@ -649,6 +712,8 @@ public class CubeScript : MonoBehaviour
             //gameObject.GetComponent<CubeScript>().enabled = false;
 
             _ucacak = true;
+
+            Destroy(gameObject, 3f);
         }
         else
         {
@@ -656,6 +721,11 @@ public class CubeScript : MonoBehaviour
         }
 
 
+    }
+
+    private void YerTemizleme()
+    {
+        //MainControl.instance.BosYeriTemizle();
     }
 
 

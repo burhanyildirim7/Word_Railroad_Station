@@ -29519,6 +29519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: makinist
       objectReference: {fileID: 0}
+    - target: {fileID: 1036868199254140581, guid: f61f9af9fc2504ef2896714e96eb65e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f61f9af9fc2504ef2896714e96eb65e0, type: 3}
 --- !u!4 &40248610396531229 stripped
@@ -29870,7 +29874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558269038207951083, guid: bebb9d961534b0f44ada4d63cdddd56d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4558269038207951083, guid: bebb9d961534b0f44ada4d63cdddd56d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30311,6 +30315,10 @@ PrefabInstance:
     - target: {fileID: 5182549090959491785, guid: 5fca3a8718b1948dd8155203157a6841, type: 3}
       propertyPath: m_Name
       value: level3adami
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182549090959491785, guid: 5fca3a8718b1948dd8155203157a6841, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523608163621427315, guid: 5fca3a8718b1948dd8155203157a6841, type: 3}
       propertyPath: m_RootOrder
@@ -30842,6 +30850,10 @@ PrefabInstance:
     - target: {fileID: 3870305995758294092, guid: 6e6392c4f1c0b45cfa0c9a9ac37459d9, type: 3}
       propertyPath: m_Name
       value: MakasKoluKomplesi
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870305995758294092, guid: 6e6392c4f1c0b45cfa0c9a9ac37459d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6512945982268287920, guid: 6e6392c4f1c0b45cfa0c9a9ac37459d9, type: 3}
       propertyPath: m_RootOrder

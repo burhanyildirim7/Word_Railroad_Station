@@ -79,6 +79,9 @@ public class PlayerController : MonoBehaviour
         GameController.instance.isContinue = false;
         GameController.instance.score = 0;
 
+        MainControl.instance.SahneyiTemizle();
+
+        Debug.Log("Oyun Basladi");
 
     }
 

@@ -33,6 +33,8 @@ public class MainControl : MonoBehaviour
 
     public GameObject _bombaObject;
 
+    public List<GameObject> _sahnedekiVagonListesi = new List<GameObject>();
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -54,13 +56,66 @@ public class MainControl : MonoBehaviour
             {
 
                 StartCoroutine(SpawnNewTrain());
+
             }
+            BosYeriTemizle();
         }
         else
         {
 
         }
 
+
+
+    }
+
+    public void SahneyiTemizle()
+    {
+        for (int i = 0; i < _sahnedekiVagonListesi.Count; i++)
+        {
+            Destroy(_sahnedekiVagonListesi[i]);
+
+        }
+
+        for (int i = 0; i < _sahnedekiVagonListesi.Count; i++)
+        {
+            if (_sahnedekiVagonListesi[i] == null)
+            {
+                _sahnedekiVagonListesi.RemoveAt(i);
+            }
+            else
+            {
+
+            }
+        }
+
+        for (int i = 0; i < _indexListesi.Count; i++)
+        {
+            _indexListesi.RemoveAt(i);
+        }
+
+        //LevelCanvasScript.instance._peron1Bitti = false;
+        //LevelCanvasScript.instance._peron2Bitti = false;
+        //LevelCanvasScript.instance._peron3Bitti = false;
+
+        //LevelCanvasScript.instance._peron1Yanlis = false;
+        //LevelCanvasScript.instance._peron2Yanlis = false;
+        //LevelCanvasScript.instance._peron3Yanlis = false;
+    }
+
+    public void BosYeriTemizle()
+    {
+        for (int i = 0; i < _sahnedekiVagonListesi.Count; i++)
+        {
+            if (_sahnedekiVagonListesi[i] == null)
+            {
+                _sahnedekiVagonListesi.RemoveAt(i);
+            }
+            else
+            {
+
+            }
+        }
 
 
     }
