@@ -12,6 +12,10 @@ public class LevelCanvasScript : MonoBehaviour
 
     private KelimeListesi _kelimeListesi;
 
+    public int _peron1HarfSayisi;
+    public int _peron2HarfSayisi;
+    public int _peron3HarfSayisi;
+
     public char[] _peron1kelime;
     public char[] _peron2kelime;
     public char[] _peron3kelime;
@@ -36,6 +40,9 @@ public class LevelCanvasScript : MonoBehaviour
     public bool _peron1Yanlis;
     public bool _peron2Yanlis;
     public bool _peron3Yanlis;
+
+
+
 
 
 
@@ -1226,16 +1233,17 @@ public class LevelCanvasScript : MonoBehaviour
 
             if (_level1)
             {
-                kacharfli = 0;
+                kacharfli = 3;
             }
             else
             {
-                kacharfli = Random.Range(1, 4);
+                //kacharfli = Random.Range(1, 4);
+                kacharfli = _peron1HarfSayisi;
             }
 
-            if (kacharfli == 0)
+            if (kacharfli == 3)
             {
-                _peron1kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
+                //_peron1kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -1325,9 +1333,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 1)
+            else if (kacharfli == 4)
             {
-                _peron1kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
+                //_peron1kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -1421,9 +1429,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 2)
+            else if (kacharfli == 5)
             {
-                _peron1kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
+                //_peron1kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -1522,9 +1530,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 3)
+            else if (kacharfli == 6)
             {
-                _peron1kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
+                //_peron1kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -1654,16 +1662,17 @@ public class LevelCanvasScript : MonoBehaviour
 
             if (_level1)
             {
-                kacharfli = 0;
+                kacharfli = 3;
             }
             else
             {
-                kacharfli = Random.Range(1, 4);
+                //kacharfli = Random.Range(1, 4);
+                kacharfli = _peron2HarfSayisi;
             }
 
-            if (kacharfli == 0)
+            if (kacharfli == 3)
             {
-                _peron2kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
+                //_peron2kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -1753,9 +1762,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 1)
+            else if (kacharfli == 4)
             {
-                _peron2kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
+                //_peron2kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -1849,9 +1858,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 2)
+            else if (kacharfli == 5)
             {
-                _peron2kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
+                //_peron2kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -1950,9 +1959,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 3)
+            else if (kacharfli == 6)
             {
-                _peron2kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
+                //_peron2kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -2081,16 +2090,17 @@ public class LevelCanvasScript : MonoBehaviour
 
             if (_level1)
             {
-                kacharfli = 0;
+                kacharfli = 3;
             }
             else
             {
-                kacharfli = Random.Range(1, 4);
+                //kacharfli = Random.Range(1, 4);
+                kacharfli = _peron3HarfSayisi;
             }
 
-            if (kacharfli == 0)
+            if (kacharfli == 3)
             {
-                _peron3kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
+                //_peron3kelime = _kelimeListesi._3HarfliKelimeler[Random.Range(0, _kelimeListesi._3HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -2180,9 +2190,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 1)
+            else if (kacharfli == 4)
             {
-                _peron3kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
+                //_peron3kelime = _kelimeListesi._4HarfliKelimeler[Random.Range(0, _kelimeListesi._4HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -2276,9 +2286,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 2)
+            else if (kacharfli == 5)
             {
-                _peron3kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
+                //_peron3kelime = _kelimeListesi._5HarfliKelimeler[Random.Range(0, _kelimeListesi._5HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -2377,9 +2387,9 @@ public class LevelCanvasScript : MonoBehaviour
 
                 }
             }
-            else if (kacharfli == 3)
+            else if (kacharfli == 6)
             {
-                _peron3kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
+                //_peron3kelime = _kelimeListesi._6HarfliKelimeler[Random.Range(0, _kelimeListesi._6HarfliKelimeler.Count)].ToCharArray();
 
                 for (int i = 0; i < 6; i++)
                 {

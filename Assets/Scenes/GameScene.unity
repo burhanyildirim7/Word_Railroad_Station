@@ -2131,9 +2131,9 @@ MonoBehaviour:
   tempLevelNo: 0
   totalLevelNo: 0
   levels:
-  - {fileID: 3808483519491570263, guid: 98798cc7b036db64fa6e750a909bc7d8, type: 3}
-  - {fileID: 3533449206853528725, guid: a1da3e40d2de62d4a96fcf1f3c37f983, type: 3}
-  - {fileID: 697696751126125377, guid: c5680560732667a4992f911883266783, type: 3}
+  - {fileID: 3808483519491570263, guid: cfa39a019b3584af99ee639f933d1a77, type: 3}
+  - {fileID: 3533449206853528725, guid: 051d5ba64776d4d27ab7729c49232ea9, type: 3}
+  - {fileID: 697696751126125377, guid: 666aab4e5f3a845539ee39566d8cc400, type: 3}
 --- !u!1 &2080463388
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,7 +4132,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap & Choose
+  m_Text: Tap to Start
 --- !u!114 &2037673477374901604
 MonoBehaviour:
   m_ObjectHideFlags: 0
