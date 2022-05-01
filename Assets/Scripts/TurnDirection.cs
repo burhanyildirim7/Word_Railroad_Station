@@ -67,6 +67,8 @@ public class TurnDirection : MonoBehaviour
 
     IEnumerator TurnDirectionWithMouse()
     {
+        ArrowControl = GameObject.FindGameObjectWithTag("ArrowControl");
+
         yield return new WaitForSeconds(1);
 
         if (ArrowControl.GetComponent<SwipeTest>()._level1)

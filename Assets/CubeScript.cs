@@ -27,6 +27,8 @@ public class CubeScript : MonoBehaviour
     private bool _ucacak;
 
 
+
+
     void Start()
     {
         if (_bombaMi)
@@ -151,8 +153,8 @@ public class CubeScript : MonoBehaviour
             }
             else
             {
-                LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
-                LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                _levelCanvasScript._peron1gelenkelime.Add(_tasidigiHarf[0]);
+                _levelCanvasScript.Peron1KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
@@ -221,8 +223,8 @@ public class CubeScript : MonoBehaviour
             }
             else
             {
-                LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
-                LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                _levelCanvasScript._peron2gelenkelime.Add(_tasidigiHarf[0]);
+                _levelCanvasScript.Peron2KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
@@ -287,8 +289,8 @@ public class CubeScript : MonoBehaviour
             }
             else
             {
-                LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
-                LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                _levelCanvasScript._peron3gelenkelime.Add(_tasidigiHarf[0]);
+                _levelCanvasScript.Peron3KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
             }
 
@@ -349,8 +351,8 @@ public class CubeScript : MonoBehaviour
                 {
                     MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
 
-                    LevelCanvasScript.instance._peron1gelenkelime.RemoveAt(LevelCanvasScript.instance._peron1gelenkelime.Count - 1);
-                    LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                    _levelCanvasScript._peron1gelenkelime.RemoveAt(_levelCanvasScript._peron1gelenkelime.Count - 1);
+                    _levelCanvasScript.Peron1KelimeleriKontrolEt();
                     //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
                     //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
@@ -362,7 +364,7 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    if (LevelCanvasScript.instance._peron1gelenkelime.Count == 6)
+                    if (_levelCanvasScript._peron1gelenkelime.Count == 6)
                     {
                         transform.DOMoveY(2, 0.5f);
                         transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
@@ -370,8 +372,8 @@ public class CubeScript : MonoBehaviour
                     }
                     else
                     {
-                        LevelCanvasScript.instance._peron1gelenkelime.Add(_tasidigiHarf[0]);
-                        LevelCanvasScript.instance.Peron1KelimeleriKontrolEt();
+                        _levelCanvasScript._peron1gelenkelime.Add(_tasidigiHarf[0]);
+                        _levelCanvasScript.Peron1KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
 
                     }
@@ -444,8 +446,8 @@ public class CubeScript : MonoBehaviour
                 {
                     MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
 
-                    LevelCanvasScript.instance._peron3gelenkelime.RemoveAt(LevelCanvasScript.instance._peron3gelenkelime.Count - 1);
-                    LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                    _levelCanvasScript._peron3gelenkelime.RemoveAt(_levelCanvasScript._peron3gelenkelime.Count - 1);
+                    _levelCanvasScript.Peron3KelimeleriKontrolEt();
                     //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
                     //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
@@ -457,7 +459,7 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    if (LevelCanvasScript.instance._peron3gelenkelime.Count == 6)
+                    if (_levelCanvasScript._peron3gelenkelime.Count == 6)
                     {
                         transform.DOMoveY(2, 0.5f);
                         transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
@@ -465,8 +467,8 @@ public class CubeScript : MonoBehaviour
                     }
                     else
                     {
-                        LevelCanvasScript.instance._peron3gelenkelime.Add(_tasidigiHarf[0]);
-                        LevelCanvasScript.instance.Peron3KelimeleriKontrolEt();
+                        _levelCanvasScript._peron3gelenkelime.Add(_tasidigiHarf[0]);
+                        _levelCanvasScript.Peron3KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
                     }
                 }
@@ -536,8 +538,8 @@ public class CubeScript : MonoBehaviour
                 {
                     MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
 
-                    LevelCanvasScript.instance._peron2gelenkelime.RemoveAt(LevelCanvasScript.instance._peron2gelenkelime.Count - 1);
-                    LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                    _levelCanvasScript._peron2gelenkelime.RemoveAt(_levelCanvasScript._peron2gelenkelime.Count - 1);
+                    _levelCanvasScript.Peron2KelimeleriKontrolEt();
                     //MainControl.instance._sahnedekiVagonListesi.RemoveAt(MainControl.instance._sahnedekiVagonListesi.Count - 1);
                     //MainControl.instance.BosYeriTemizle();
                     _bombaPatlamaEfekt.Play();
@@ -549,7 +551,7 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    if (LevelCanvasScript.instance._peron2gelenkelime.Count == 6)
+                    if (_levelCanvasScript._peron2gelenkelime.Count == 6)
                     {
                         transform.DOMoveY(2, 0.5f);
                         transform.DORotate(new Vector3(0, 0, -90f), 0.5f);
@@ -557,8 +559,8 @@ public class CubeScript : MonoBehaviour
                     }
                     else
                     {
-                        LevelCanvasScript.instance._peron2gelenkelime.Add(_tasidigiHarf[0]);
-                        LevelCanvasScript.instance.Peron2KelimeleriKontrolEt();
+                        _levelCanvasScript._peron2gelenkelime.Add(_tasidigiHarf[0]);
+                        _levelCanvasScript.Peron2KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
                     }
                 }

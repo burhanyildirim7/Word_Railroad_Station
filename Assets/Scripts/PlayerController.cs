@@ -81,7 +81,11 @@ public class PlayerController : MonoBehaviour
 
         MainControl.instance.SahneyiTemizle();
 
+
+
         Debug.Log("Oyun Basladi");
+
+
 
     }
 
