@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool xVarMi = true;
     public bool collectibleVarMi = true;
 
-
+    private LevelCanvasScript _levelCanvasScript;
 
 
     private void Awake()
@@ -82,11 +82,26 @@ public class PlayerController : MonoBehaviour
         MainControl.instance.SahneyiTemizle();
 
 
+        // Invoke("IlkVagonYolla", 1f);
 
         Debug.Log("Oyun Basladi");
 
 
 
+    }
+
+    private void IlkVagonYolla()
+    {
+        _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+
+        if (_levelCanvasScript._level1)
+        {
+            MainControl.instance.Level1VagonGonder();
+        }
+        else
+        {
+
+        }
     }
 
 }

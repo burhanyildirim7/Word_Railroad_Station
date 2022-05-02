@@ -97,9 +97,21 @@ public class CubeScript : MonoBehaviour
 
     private void HareketiBaslat()
     {
-        transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
+        if (ArrowControl.GetComponent<SwipeTest>()._level1)
+        {
+            transform.DOMove(new Vector3(0, 1, -15), 2).OnComplete(() => ArrowControl.GetComponent<SwipeTest>().OnBoardingKontrol());
+        }
+        else
+        {
+            transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
+        }
+
     }
 
+    public void DuraklamaNoktasi()
+    {
+        transform.DOMove(new Vector3(0, 1, -7), 3).OnComplete(() => turnDonenRay());
+    }
 
     void turnDonenRay()
     {
@@ -156,6 +168,15 @@ public class CubeScript : MonoBehaviour
                 _levelCanvasScript._peron1gelenkelime.Add(_tasidigiHarf[0]);
                 _levelCanvasScript.Peron1KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+                if (_levelCanvasScript._level1)
+                {
+                    MainControl.instance.Level1VagonGonder();
+                }
+                else
+                {
+
+                }
             }
 
 
@@ -171,8 +192,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
 
             }
@@ -202,6 +223,8 @@ public class CubeScript : MonoBehaviour
                 }
 
             }
+
+
 
 
         }
@@ -226,6 +249,15 @@ public class CubeScript : MonoBehaviour
                 _levelCanvasScript._peron2gelenkelime.Add(_tasidigiHarf[0]);
                 _levelCanvasScript.Peron2KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+                if (_levelCanvasScript._level1)
+                {
+                    MainControl.instance.Level1VagonGonder();
+                }
+                else
+                {
+
+                }
             }
 
 
@@ -241,8 +273,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
             }
             else
@@ -270,6 +302,8 @@ public class CubeScript : MonoBehaviour
                     ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
                 }
             }
+
+
         }
 
         else if (other.gameObject.tag == "MidStation")
@@ -292,6 +326,15 @@ public class CubeScript : MonoBehaviour
                 _levelCanvasScript._peron3gelenkelime.Add(_tasidigiHarf[0]);
                 _levelCanvasScript.Peron3KelimeleriKontrolEt();
                 MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+                if (_levelCanvasScript._level1)
+                {
+                    MainControl.instance.Level1VagonGonder();
+                }
+                else
+                {
+
+                }
             }
 
             //bariyerOrta.GetComponent<MidStationControl>().eklenenHarfler.Add(gameObject.transform.GetChild(transform.childCount - 1).gameObject);
@@ -306,8 +349,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
             }
             else
@@ -335,6 +378,8 @@ public class CubeScript : MonoBehaviour
                     ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
                 }
             }
+
+
         }
 
         else if (other.gameObject.tag == "LeftStop")
@@ -358,6 +403,14 @@ public class CubeScript : MonoBehaviour
                     _bombaPatlamaEfekt.Play();
                     Destroy(other.gameObject, 0.3f);
                     //MainControl.instance.BosYeriTemizle();
+                    if (_levelCanvasScript._level1)
+                    {
+                        MainControl.instance.Level1VagonGonder();
+                    }
+                    else
+                    {
+
+                    }
                     Destroy(gameObject, 0.3f);
                     Invoke("YerTEmizleme", 0.5f);
 
@@ -375,6 +428,15 @@ public class CubeScript : MonoBehaviour
                         _levelCanvasScript._peron1gelenkelime.Add(_tasidigiHarf[0]);
                         _levelCanvasScript.Peron1KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+                        if (_levelCanvasScript._level1)
+                        {
+                            MainControl.instance.Level1VagonGonder();
+                        }
+                        else
+                        {
+
+                        }
 
                     }
 
@@ -402,8 +464,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
             }
             else
@@ -431,6 +493,8 @@ public class CubeScript : MonoBehaviour
                     ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
                 }
             }
+
+
         }
         else if (other.gameObject.tag == "MidStop")
         {
@@ -470,6 +534,15 @@ public class CubeScript : MonoBehaviour
                         _levelCanvasScript._peron3gelenkelime.Add(_tasidigiHarf[0]);
                         _levelCanvasScript.Peron3KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+                        if (_levelCanvasScript._level1)
+                        {
+                            MainControl.instance.Level1VagonGonder();
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
             }
@@ -493,8 +566,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
             }
             else
@@ -522,6 +595,8 @@ public class CubeScript : MonoBehaviour
                     ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
                 }
             }
+
+
         }
 
         else if (other.gameObject.tag == "RightStop")
@@ -562,6 +637,16 @@ public class CubeScript : MonoBehaviour
                         _levelCanvasScript._peron2gelenkelime.Add(_tasidigiHarf[0]);
                         _levelCanvasScript.Peron2KelimeleriKontrolEt();
                         MainControl.instance._sahnedekiVagonListesi.Add(gameObject);
+
+
+                        if (_levelCanvasScript._level1)
+                        {
+                            MainControl.instance.Level1VagonGonder();
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
             }
@@ -586,8 +671,8 @@ public class CubeScript : MonoBehaviour
                 }
                 else
                 {
-                    ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
-                    ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
+                    //ArrowControl.GetComponent<SwipeTest>().rightArrow.SetActive(false);
+                    //ArrowControl.GetComponent<SwipeTest>().leftArrow.SetActive(true);
                 }
             }
             else
@@ -615,6 +700,7 @@ public class CubeScript : MonoBehaviour
                     ArrowControl.GetComponent<SwipeTest>().midArrow.SetActive(true);
                 }
             }
+
         }
         else if (other.gameObject.tag == "turnDirection")
         {

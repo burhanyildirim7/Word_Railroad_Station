@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4788496, g: 0.80017924, b: 0.8994595, a: 1}
+  m_IndirectSpecularColor: {r: 0.4770398, g: 0.79908794, b: 0.8987446, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1KacAsama
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: rightStationChild
@@ -677,16 +677,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[0]
       value: 
-      objectReference: {fileID: 3838155427673794888, guid: 0936bdc8e88d0e14697d81b300753ef3, type: 3}
+      objectReference: {fileID: 7569482961639147122, guid: b89c950e461be11498d3e1822e968374, type: 3}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[1]
       value: 
-      objectReference: {fileID: 7569482961639147122, guid: b89c950e461be11498d3e1822e968374, type: 3}
+      objectReference: {fileID: 3838155427673794888, guid: 0936bdc8e88d0e14697d81b300753ef3, type: 3}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[2]
       value: 
@@ -694,13 +694,21 @@ PrefabInstance:
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[3]
       value: 
-      objectReference: {fileID: 7066734608288600077, guid: 1f0e6147d9b739f469b70d082be31979, type: 3}
+      objectReference: {fileID: 5411743297011484593, guid: 2663f7458f1654f8489a6ddce7c7cb4e, type: 3}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[4]
       value: 
-      objectReference: {fileID: 6328238566468072030, guid: e9f8d61d2a9f9434b8b2e8f3c0ab4f3d, type: 3}
+      objectReference: {fileID: 5445724800152665320, guid: 0a0984803e3b306419a5910445a4bea5, type: 3}
     - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
       propertyPath: _level1VagonListesi.Array.data[5]
+      value: 
+      objectReference: {fileID: 6328238566468072030, guid: e9f8d61d2a9f9434b8b2e8f3c0ab4f3d, type: 3}
+    - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
+      propertyPath: _level1VagonListesi.Array.data[6]
+      value: 
+      objectReference: {fileID: 7066734608288600077, guid: 1f0e6147d9b739f469b70d082be31979, type: 3}
+    - target: {fileID: 5665355074103642110, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
+      propertyPath: _level1VagonListesi.Array.data[7]
       value: 
       objectReference: {fileID: 8412379554014161090, guid: b2e52edc0dcc48e46a93dc39bb6f08bc, type: 3}
     - target: {fileID: 5665355074103642111, guid: f06f3c410852e4e41b6d30a9a7d868a9, type: 3}
@@ -1364,6 +1372,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197473706226163456, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
+      propertyPath: _level1Onboarding
+      value: 
+      objectReference: {fileID: 797337713}
+    - target: {fileID: 2197473706226163456, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
+      propertyPath: _level1OnboardingSag
+      value: 
+      objectReference: {fileID: 902794431}
+    - target: {fileID: 2197473706226163456, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
+      propertyPath: _level1OnboardingSol
+      value: 
+      objectReference: {fileID: 1946962226}
+    - target: {fileID: 2197473706226163456, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
+      propertyPath: _level1OnboardingBombaSag
+      value: 
+      objectReference: {fileID: 627607553}
+    - target: {fileID: 2197473706226163456, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
+      propertyPath: _level1OnboardingBombaSol
+      value: 
+      objectReference: {fileID: 743533001}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c1affdac3d10e49950d2e381b11701, type: 3}
 --- !u!1 &672851942
@@ -1707,7 +1735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743533002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1802,7 +1830,7 @@ GameObject:
   - component: {fileID: 797337715}
   m_Layer: 5
   m_Name: LEVEL1ONBOARDINGS
-  m_TagString: Untagged
+  m_TagString: Level1Onboarding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1824,7 +1852,7 @@ RectTransform:
   - {fileID: 627607554}
   - {fileID: 743533002}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2063,7 +2091,7 @@ RectTransform:
   - {fileID: 37881943}
   - {fileID: 1532771435}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5268,12 +5296,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 797337714}
   - {fileID: 2037673476680140947}
   - {fileID: 2037673478094028005}
   - {fileID: 2037673478225531756}
   - {fileID: 2037673476796106676}
   - {fileID: 937072497}
-  - {fileID: 797337714}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6127,7 +6155,7 @@ RectTransform:
   - {fileID: 2326140859153717882}
   - {fileID: 1994317954}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6306,7 +6334,7 @@ RectTransform:
   - {fileID: 2037673477896446573}
   - {fileID: 2037673477169917710}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7858,7 +7886,7 @@ RectTransform:
   - {fileID: 2037673477802928443}
   - {fileID: 2037673476498969472}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8074,7 +8102,7 @@ RectTransform:
   - {fileID: 2037673477593457174}
   - {fileID: 2037673476851357705}
   m_Father: {fileID: 2037673476204140300}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

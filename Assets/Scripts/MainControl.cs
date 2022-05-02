@@ -41,6 +41,8 @@ public class MainControl : MonoBehaviour
 
     public int _level1KacAsama;
 
+    private bool _ilkVagon;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -51,6 +53,11 @@ public class MainControl : MonoBehaviour
     {
         Invoke("GonderilecekHarfListesiOlustur", 0.5f);
         _level1AsamaSayisi = 0;
+        _ilkVagon = true;
+
+        //_levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+
+
         //GönderilecekHarfListesiOlustur();
 
     }
@@ -66,6 +73,16 @@ public class MainControl : MonoBehaviour
 
             }
             BosYeriTemizle();
+
+            if (_ilkVagon)
+            {
+                Level1VagonGonder();
+                _ilkVagon = false;
+            }
+            else
+            {
+
+            }
         }
         else
         {
@@ -194,6 +211,7 @@ public class MainControl : MonoBehaviour
 
         if (_levelCanvasScript._level1)
         {
+            /*
             var spawnedLetter = Instantiate(_level1VagonListesi[_level1AsamaSayisi], new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
 
             var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
@@ -212,6 +230,7 @@ public class MainControl : MonoBehaviour
 
             }
             yield return new WaitForSeconds(8);
+            */
         }
         else
         {
@@ -260,5 +279,56 @@ public class MainControl : MonoBehaviour
         ready = true;
     }
 
+
+    public void Level1VagonGonder()
+    {
+
+        _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+
+        if (_levelCanvasScript._level1)
+        {
+
+            if (_level1AsamaSayisi == 3)
+            {
+                var spawnedLetter = Instantiate(_level1VagonListesi[_level1AsamaSayisi], new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
+
+                var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
+                //spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                spawnedLetter.transform.parent = spawnedTrain.transform;
+                // spawnedTrain.GetComponent<CubeScript>()._bombaMi = false;
+                spawnedTrain.GetComponent<CubeScript>()._bombaMi = true;
+            }
+            else
+            {
+                var spawnedLetter = Instantiate(_level1VagonListesi[_level1AsamaSayisi], new Vector3(0, 2, -23), Quaternion.Euler(90, 0, 0));
+
+                var spawnedTrain = Instantiate(vagon, new Vector3(0, 1, -23), Quaternion.identity);
+                spawnedLetter.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.white;
+                spawnedLetter.transform.parent = spawnedTrain.transform;
+                spawnedTrain.GetComponent<CubeScript>()._bombaMi = false;
+            }
+
+
+            _level1AsamaSayisi++;
+
+            if (_level1AsamaSayisi == _level1KacAsama)
+            {
+                _level1AsamaSayisi = 0;
+            }
+            else
+            {
+
+            }
+
+
+
+            Debug.Log("VAGON YOLLA");
+        }
+        else
+        {
+
+        }
+
+    }
 
 }

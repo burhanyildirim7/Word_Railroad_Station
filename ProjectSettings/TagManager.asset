@@ -38,6 +38,8 @@ TagManager:
   - LevelCanvas
   - SolBariyer
   - SagBariyer
+  - KontrolNoktasi
+  - Level1Onboarding
   layers:
   - Default
   - TransparentFX

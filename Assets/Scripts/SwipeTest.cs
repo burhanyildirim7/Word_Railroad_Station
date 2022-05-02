@@ -28,11 +28,127 @@ public class SwipeTest : MonoBehaviour
 
     private LevelCanvasScript _levelCanvasScript;
 
+    public KontrolNoktasiScript _kontrolNoktasiScript;
+
+    public GameObject _level1Onboarding;
+
+
+    private bool _level1Asama1;
+    private bool _level1Asama2;
+    private bool _level1Asama3;
+    private bool _level1Asama4;
+    private bool _level1Asama5;
+    private bool _level1Asama6;
+    private bool _level1Asama7;
+
+    private CubeScript _cubeScript;
+
     // Start is called before the first frame update
     void Start()
     {
         OkSifirla();
         _levelCanvasScript = GameObject.FindGameObjectWithTag("LevelCanvas").GetComponent<LevelCanvasScript>();
+        //_level1Onboarding.SetActive(false);
+        _level1Onboarding = GameObject.FindGameObjectWithTag("Level1Onboarding");
+        _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+        _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+        _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+        _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+
+    }
+
+    public void OnBoardingKontrol()
+    {
+        if (_level1Asama1 == false && _level1Asama2 == false && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            leftArrow.SetActive(false);
+            rightArrow.SetActive(true);
+            _level1Asama1 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(true);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == false && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            _level1Asama2 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(true);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            _level1Asama3 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(true);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            leftArrow.SetActive(false);
+            rightArrow.SetActive(true);
+            _level1Asama4 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(true);
+            //_kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+            //_kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+            //_cubeScript = _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>();
+
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            _level1Asama5 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(true);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == false && _level1Asama7 == false)
+        {
+            rightArrow.SetActive(false);
+            leftArrow.SetActive(true);
+            _level1Asama6 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(true);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == false)
+        {
+            rightArrow.SetActive(false);
+            leftArrow.SetActive(true);
+            _level1Asama7 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+            _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+            _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+
+        }
+        else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == true)
+        {
+            rightArrow.SetActive(false);
+            leftArrow.SetActive(true);
+            _level1Asama7 = true;
+            _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+            _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+            _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+            _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+
+        }
+        else
+        {
+
+        }
     }
 
     // Update is called once per frame
@@ -65,8 +181,61 @@ public class SwipeTest : MonoBehaviour
                         }
                         else
                         {
-                            rightArrow.SetActive(false);
-                            leftArrow.SetActive(true);
+                            if (_level1Asama1 == true && _level1Asama2 == false && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+                                rightArrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+                                rightArrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+                                rightArrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                //_cubeScript.DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == true)
+                            {
+
+                            }
+                            else
+                            {
+
+                            }
+
                         }
 
 
@@ -87,8 +256,68 @@ public class SwipeTest : MonoBehaviour
                         }
                         else
                         {
-                            leftArrow.SetActive(false);
-                            rightArrow.SetActive(true);
+                            if (_level1Asama1 == true && _level1Asama2 == false && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == false && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+                                leftArrow.SetActive(false);
+                                rightArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == false && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == false && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == false && _level1Asama7 == false)
+                            {
+                                leftArrow.SetActive(false);
+                                rightArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == false)
+                            {
+                                leftArrow.SetActive(false);
+                                rightArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else if (_level1Asama1 == true && _level1Asama2 == true && _level1Asama3 == true && _level1Asama4 == true && _level1Asama5 == true && _level1Asama6 == true && _level1Asama7 == true)
+                            {
+                                rightArrow.SetActive(false);
+                                leftArrow.SetActive(true);
+                                _kontrolNoktasiScript = GameObject.FindGameObjectWithTag("KontrolNoktasi").GetComponent<KontrolNoktasiScript>();
+                                _kontrolNoktasiScript._kontrolEdilenVagon.GetComponent<CubeScript>().DuraklamaNoktasi();
+                                _level1Onboarding.transform.GetChild(0).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(1).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(2).gameObject.SetActive(false);
+                                _level1Onboarding.transform.GetChild(3).gameObject.SetActive(false);
+                            }
+                            else
+                            {
+                                //leftArrow.SetActive(false);
+                                //rightArrow.SetActive(true);
+                            }
+
                         }
 
 
@@ -578,7 +807,7 @@ public class SwipeTest : MonoBehaviour
         if (_level1)
         {
 
-            leftArrow.SetActive(true);
+            rightArrow.SetActive(true);
 
 
         }
