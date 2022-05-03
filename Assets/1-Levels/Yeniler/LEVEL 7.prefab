@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8826285192766730490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4311,7 +4311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8378363234771325814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18661,7 +18661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6933419839202526140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21073,12 +21073,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level1: 0
-  _peron1HarfSayisi: 0
-  _peron2HarfSayisi: 0
-  _peron3HarfSayisi: 0
-  _peron1kelime: 
-  _peron2kelime: 
-  _peron3kelime: 
+  _peron1HarfSayisi: 5
+  _peron2HarfSayisi: 5
+  _peron3HarfSayisi: 5
+  _peron1kelime: 48004500410052005400
+  _peron2kelime: 54005200450041005400
+  _peron3kelime: 54004800450052004500
   _peron1gelenkelime: 
   _peron2gelenkelime: 
   _peron3gelenkelime: 
@@ -32550,6 +32550,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harf Standlari (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3365489916446273822, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733585147503284291, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5979060236307723219, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -33004,6 +33012,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harf Standlari (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3365489916446273822, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733585147503284291, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5979060236307723219, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -33047,6 +33063,10 @@ PrefabInstance:
     - target: {fileID: 5979060236307723219, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258917813126849761, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
@@ -33127,6 +33147,14 @@ PrefabInstance:
     - target: {fileID: 278885564930238745, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
       propertyPath: m_Name
       value: Harf Standlari
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365489916446273822, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733585147503284291, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5979060236307723219, guid: 8a8f515c029644757bedb0e2ac723440, type: 3}
       propertyPath: m_RootOrder
